@@ -1,0 +1,75 @@
+
+.Introduction {
+    display: flex ;
+    justify-content: center;
+    width: 60%;
+    height: 60%;
+    /* border: rgb(0, 0, 0) 2px solid; */
+    margin: 0 0 2% 0;
+    position: relative;
+}
+
+.Introduction img {
+    /* border: rgb(255, 0, 0) 2px solid; */
+    width: 100%;
+    height: 100%;
+}
+
+.StartToUpload {
+    /* border: rgb(35, 182, 255) 2px solid; */
+    position: absolute;
+    width: 30%;
+    height: 10%;
+    top: 68%; /* 从容器顶部开始 */
+    left: 8%; /* 从容器左侧开始 */
+}
+
+.Feature {
+    /* border: rgb(0, 0, 0) 2px solid; */
+    font-family: 'Kanit', sans-serif;
+    width: 60%;
+    height: 30%;
+}
+
+.FeatureTitle {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    height: 20%;
+    font-size: 20px;
+}
+
+.FeaturePart {
+    display: flex;
+    /* flex-direction: column; */
+    /* border: rgb(0, 0, 0) 2px solid; */
+    height: 80%;
+}
+
+.FeatureElement {
+    /* border: rgb(183, 49, 49) 2px solid; */
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+}
+
+.FeatureImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.FeatureImg img {
+    height: 80%;
+}
+
+.FeatureText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}
+
+

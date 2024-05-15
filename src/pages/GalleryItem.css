@@ -1,0 +1,11 @@
+
+.GalleryItemContainer {
+    background-color: #DBECF5;
+    display: flex;
+    width: 60%;
+    height: 50%;
+    border: rgb(86, 137, 184) 5px dashed;
+    border-radius: 15px;
+    margin-right: 10%;
+    margin-top: 2%;
+}

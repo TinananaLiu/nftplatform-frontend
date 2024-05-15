@@ -1,0 +1,104 @@
+
+.NftContainer {
+    background-color: #DBECF5;
+    display: flex;
+    width: 60%;
+    height: 50%;
+    border: rgb(86, 137, 184) 5px dashed;
+    border-radius: 15px;
+    margin-right: 10%;
+    margin-top: 2%;
+}
+
+.Image {
+    /* border: rgb(0, 0, 0) 2px solid; */
+    height: 80%;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+}
+
+.Tags {
+    /* border: rgb(0, 0, 0) 2px solid; */
+    height: 20%;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+}
+
+.Image img {
+    width: 80%;
+}
+
+
+.TagsElement {
+    background-color: #ffffff;
+    margin: 0 5%;
+    border-radius: 20px;
+    font-family: monospace;
+    width: 30%;
+    height: 50%;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+}
+
+.LeftPart {
+    /* border: rgb(0, 0, 0) 2px solid; */
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.RightPart {
+    /* border: rgb(0, 0, 0) 2px solid; */
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 60%;
+    background-color: #ffffff;
+    margin: 5% 5% 5% 0;
+}
+
+.UserInfo {
+    border: rgb(255, 0, 0) 2px solid;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.UserPhoto {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 5% 2% 5% 5%;
+}
+
+.UserPhoto img {
+    height: 90%;
+}
+
+
+
+.ItemName {
+    border: rgb(115, 255, 0) 2px solid;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.ItemInfo {
+    border: rgb(255, 0, 0) 2px solid;
+    display: flex;
+    flex-direction: column;
+    font-family: monospace;
+    height: 60%;
+    display: flex;
+}
+
+.InfoElement {
+    border: rgb(0, 0, 0) 2px dashed;
+    flex-grow: 1;
+}

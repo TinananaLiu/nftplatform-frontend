@@ -1,0 +1,227 @@
+.App {
+  text-align: center;
+  display: flex;
+  border-radius: 100px;
+}
+
+.Sidebar {
+  flex: 2;
+  /* border: red 2px solid; */
+  height: 100vh;
+  background-color: #9FCAE3;
+}
+
+
+.MainPage {
+  flex: 8;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.UserBar {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  border: rgb(0, 0, 0) 2px dashed;
+}
+
+.UserBarElement {
+  border: rgb(255, 0, 0) 2px dashed;
+  display: flex;
+  justify-content: end;
+  /* height: 80%; */
+  width: 70%;
+  margin-top: 2%;
+}
+
+.UserPhoto img {
+  height: 100%;
+}
+
+.PageContent {
+  /* border: rgb(0, 0, 0) 2px dashed; */
+  width: 100%;
+  display: flex;
+  flex: 9;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.Logo {
+  /* margin: 1rem 0.5rem 1rem 0.5rem; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: rgb(0, 0, 0) 2px solid; */
+  margin: 10% 0 5% 0;
+}
+
+.Logo img {
+  width: 60%;
+}
+
+.Function {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 30%;
+}
+
+.FunctionElement {
+  height: 25%;
+  width: 80%;
+  margin: 2% 0 2% 0;
+  /*  width: 70%; */
+  /*  display: flex;
+  align-content: center;
+  justify-content: center;*/
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  border-radius: 30px;
+}
+
+.FunctionImg {
+  /* border: red 2px solid; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 100%;
+  margin-left: 10%;
+}
+
+.FunctionImg img {
+  display: flex;
+  height: 30%;
+}
+
+.FunctionTitle {
+  /* border: red 2px solid; */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  width: 80%;
+  height: 100%;
+  font-family: 'Kanit', sans-serif;
+  margin-left: 3%;
+  font-size: 100%;
+}
+
+.BackContainer {
+  display: flex;
+  width: 120vh;
+  align-items: center;
+}
+
+.BackContainer img {
+  height: 80%;
+}
+
+
+.UploadContainer {
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  width: 100vh;
+  margin-top: 1rem;
+  background-color: #dbecf589;
+  border: #9FCAE3 4px dashed;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.UploadPic {
+  width: 130px; 
+  margin-top: 2rem;
+}
+
+.UploadWord {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-family: 'Kanit', sans-serif;
+}
+
+.Done {
+  padding-right: 5px;
+}
+
+
+.ClickButton {
+  background-color: #9FCAE3;
+  border-radius: 30px;
+  width: 160px;
+  height: 30px;
+  padding-top: 10px;
+  margin-bottom: 1rem;
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.GreenCheck {
+  width: 18px;
+  height: auto;
+}
+
+.Plus {
+  width: 30px;
+  height: auto;
+  padding-top: 1rem;
+}
+
+
+.ChooseFile {
+  font-size: 50px;
+}
+
+.LogoImage {
+  /* border: red 2px solid; */
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: none;
+  object-fit: contain;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

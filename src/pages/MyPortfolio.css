@@ -1,0 +1,65 @@
+.MyUserPart {
+    /* border: rgb(0, 0, 0) 1px dashed; */
+    font-family: 'Kanit', sans-serif;
+    display: flex;
+    width: 50%;
+    height: 20%;
+    align-items: center;
+    margin: 0 20% 2% 5%;
+}
+
+.MyPhoto {
+    /* border: rgb(230, 67, 67) 1px dashed; */
+    width: 30%;
+    height: 100%;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    text-align: left;
+}
+
+.MyPhoto img {
+    height: 100%;
+    /* width: 100%; */
+}
+
+.MyInfo {
+    /* border: rgb(230, 67, 67) 1px dashed; */
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+    text-align: left;
+    margin-left: 3%;
+}
+
+.MyInfoItem {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+
+.PortfolioContainer {
+    /* border: rgb(0, 0, 0) 1px dashed; */
+    display: grid;
+    width: 70%;
+    height: 70%;
+    grid-template-columns: 50% 50%; /* 将容器分成两列，每列占据父容器的50%宽度 */
+    grid-template-rows: 50% 50%; /* 将容器分成两行，每行占据父容器的50%高度 */
+    /* gap: 3%; */
+  }
+  
+  .PortfolioItem {
+    display: flex;
+    justify-content: center;
+    background-color: #dbecf589;
+    border-radius: 30px;
+    width: 90%;
+    height: 90%;
+    font-family: 'Kanit', sans-serif;
+    padding-top: 5%;
+    /* object-fit: contain; */
+    /* padding: 5%; */
+  }
+
