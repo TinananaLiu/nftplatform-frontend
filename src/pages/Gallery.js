@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 const portfolios = [
   {
     userId: 1,
-    username: 'user1',
+    username: 'tina',
     avatar: avatar1,
     cover: cover1,
     name: 'Tina Collection'
@@ -51,7 +51,7 @@ const GalleryPage = () => {
             className="GalleryItem"
             //這邊要改成按了之後導到不同Item
             onClick={() => {
-              navigateTo('/galleryitem')
+              navigateTo(`/galleryitem?person=${portfolio.username}`)
             }}>
             <img src={portfolio.avatar} alt={portfolio.username} />
             <img src={portfolio.cover} alt={portfolio.name} />

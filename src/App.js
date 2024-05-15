@@ -122,6 +122,7 @@ function App() {
                       // type="submit"
                       variant="contained"
                       sx={{
+                        height: '35px',
                         mt: 3,
                         mb: 2,
                         backgroundColor: '#9FCAE3',
@@ -151,6 +152,7 @@ function App() {
                     // type="submit"
                     variant="contained"
                     sx={{
+                      height: '35px',
                       mt: 3,
                       mb: 2,
                       backgroundColor: '#9FCAE3',
@@ -171,7 +173,9 @@ function App() {
             </div>
           )}
 
-        <div className="PageContent">
+        <div style={{
+          // border: "2px solid red"
+        }}  className="PageContent">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/upload" element={<UploadPage />} />

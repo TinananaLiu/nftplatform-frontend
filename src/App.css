@@ -5,16 +5,23 @@
 }
 
 .Sidebar {
-  flex: 2;
-  /* border: red 2px solid; */
-  height: 100vh;
+  width: 20%;
+  max-width: 180px;
   background-color: #9FCAE3;
 }
 
 
+@media (max-width: 800px) {
+  .Sidebar {
+    display: none;
+  }
+}
+
+
 .MainPage {
-  flex: 8;
-  height: 100vh;
+  /* flex: 8; */
+  /* height: 100%; */
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,15 +32,14 @@
   display: flex;
   flex: 1;
   justify-content: center;
-  border: rgb(0, 0, 0) 2px dashed;
+  /* border: rgb(0, 0, 0) 2px dashed; */
 }
 
 .UserBarElement {
-  border: rgb(255, 0, 0) 2px dashed;
+  /* border: rgb(255, 0, 0) 2px dashed; */
   display: flex;
   justify-content: end;
-  /* height: 80%; */
-  width: 70%;
+  width: 80%;
   margin-top: 2%;
 }
 
@@ -42,13 +48,12 @@
 }
 
 .PageContent {
-  /* border: rgb(0, 0, 0) 2px dashed; */
-  width: 100%;
-  display: flex;
   flex: 9;
+  display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
+  justify-content: start;
+  min-height: 100vh;
 }
 
 .Logo {
@@ -61,7 +66,8 @@
 }
 
 .Logo img {
-  width: 60%;
+  width: 80%;
+  margin: 1rem 0 1rem 0;
 }
 
 .Function {
@@ -72,16 +78,11 @@
 }
 
 .FunctionElement {
-  height: 25%;
+  max-height: 50px;
   width: 80%;
   margin: 2% 0 2% 0;
-  /*  width: 70%; */
-  /*  display: flex;
-  align-content: center;
-  justify-content: center;*/
   display: flex;
   align-items: center;
-  /* justify-content: center; */
   border-radius: 30px;
 }
 
@@ -114,7 +115,9 @@
 
 .BackContainer {
   display: flex;
-  width: 120vh;
+  /* width: 120vh; */
+  width: 100%;
+  padding-left: 1rem;
   align-items: center;
 }
 
@@ -127,7 +130,7 @@
   display: flex;
   flex-direction: column;
   height: 50vh;
-  width: 100vh;
+  width: 80%;
   margin-top: 1rem;
   background-color: #dbecf589;
   border: #9FCAE3 4px dashed;

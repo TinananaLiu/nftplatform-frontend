@@ -1,11 +1,30 @@
 
 .GalleryItemContainer {
     background-color: #DBECF5;
-    display: flex;
-    width: 60%;
+    /* display: flex; */
+    /* width: 60%; */
     height: 50%;
     border: rgb(86, 137, 184) 5px dashed;
     border-radius: 15px;
     margin-right: 10%;
     margin-top: 2%;
+}
+
+.ProfileGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+@media (max-width: 1500px) {
+    .ProfileGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1000px) {
+    .ProfileGrid {
+        grid-template-columns: repeat(1, 1fr);
+        justify-items: center;
+    }
 }
