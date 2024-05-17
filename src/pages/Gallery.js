@@ -10,26 +10,40 @@ import { useNavigate } from 'react-router-dom'
 const portfolios = [
   {
     userId: 1,
-    username: 'user1',
+    username: 'Tinanana',
     avatar: avatar1,
-    cover: cover1,
-    name: 'Tina Collection'
+    cover: cover1
+    // name: 'Tina'
   },
   {
     userId: 2,
-    username: 'user2',
+    username: 'John',
     avatar: avatar2,
-    cover: cover2,
-    name: 'Cat Lover'
+    cover: cover2
+    // name: 'Cat Lover'
   },
   // 其他作品集数据...
   {
     userId: 3,
-    username: 'user3',
+    username: 'Amy',
     avatar: avatar2,
-    cover: cover2,
-    name: 'Hiiiiii'
+    cover: cover2
+    // name: 'Hiiiiii'
   }
+  // {
+  //   userId: 4,
+  //   username: 'Happy',
+  //   avatar: avatar2,
+  //   cover: cover2
+  //   // name: 'Hiiiiii'
+  // },
+  // {
+  //   userId: 5,
+  //   username: 'Billy Goat',
+  //   avatar: avatar2,
+  //   cover: cover2
+  //   // name: 'Hiiiiii'
+  // }
 ]
 
 const GalleryPage = () => {
@@ -53,9 +67,13 @@ const GalleryPage = () => {
             onClick={() => {
               navigateTo('/galleryitem')
             }}>
-            <img src={portfolio.avatar} alt={portfolio.username} />
-            <img src={portfolio.cover} alt={portfolio.name} />
-            <p>{portfolio.name}</p>
+            <span className="GalleryItemAvatar">
+              <img src={portfolio.avatar} alt={portfolio.username} />
+            </span>
+            <span className="GalleryItemCover">
+              <img src={portfolio.cover} alt={portfolio.name} />
+            </span>
+            <span className="GalleryItemUser">{portfolio.username}</span>
           </div>
         ))}
       </div>

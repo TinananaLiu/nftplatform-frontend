@@ -62,7 +62,8 @@ const MockNFTItem = {
     date: '2023/05/01 test',
     category: 'Education test',
     institution: 'NTU test',
-    description: 'notes for E&I class test',
+    description: 'notes for E&I class test/blablabla/......../........',
+    verification: '1.Upload photo include me 2.Blablabla 3........ 4........',
     tags: ['note1', 'E&I1']
   }
 }

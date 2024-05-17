@@ -1,11 +1,52 @@
 
 .GalleryContainer {
     /* padding-top: 2%; */
-    border: rgb(0, 0, 0) 1px dashed;
+    /* border: rgb(0, 0, 0) 2px dashed; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+    grid-auto-rows: minmax(20%, 30%);
+    /* grid-auto-rows: minmax(10%, auto); */
+    width: 80%;
+    height: 70%;
+    /* justify-content: center; */
+    /* align-items: center; */
+    justify-items: center;
+    /* gap: 1%; */
 }
 
 .GalleryItem {
     background-color: #dbecf589;
+    /* border: rgb(255, 0, 0) 1px dashed; */
     border-radius: 30px;
     font-family: 'Kanit', sans-serif;
+    height: 70%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.GalleryItemUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+}
+
+.GalleryItemCover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+}
+
+.GalleryItem img {
+    height: 100%;
+}
+
+
+.GalleryItemAvatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
 }

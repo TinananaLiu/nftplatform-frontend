@@ -19,6 +19,7 @@ const NftItemPage = () => {
     category: '',
     institution: '',
     description: '',
+    verification: '',
     tags: ['']
   })
 
@@ -79,20 +80,24 @@ const NftItemPage = () => {
           <span className="ItemName">{nftData.title}</span>
           <span className="ItemInfo">
             <span className="InfoElement">
-              <span>Date</span>
-              <span>{nftData.date}</span>
+              <span className="InfoElementTitle">Date</span>
+              <span className="InfoElementContent">{nftData.date}</span>
             </span>
             <span className="InfoElement">
-              <span>Category</span>
-              <span>{nftData.category}</span>
+              <span className="InfoElementTitle">Category</span>
+              <span className="InfoElementContent">{nftData.category}</span>
             </span>
             <span className="InfoElement">
-              <span>Institution</span>
-              <span>{nftData.institution}</span>
+              <span className="InfoElementTitle">Institution</span>
+              <span className="InfoElementContent">{nftData.institution}</span>
             </span>
             <span className="InfoElement">
-              <span>Description</span>
-              <span>{nftData.description}</span>
+              <span className="InfoElementTitle">Description</span>
+              <span className="InfoElementContent">{nftData.description}</span>
+            </span>
+            <span className="InfoElement">
+              <span className="InfoElementTitle">Verification</span>
+              <span className="InfoElementContent">{nftData.verification}</span>
             </span>
           </span>
         </span>

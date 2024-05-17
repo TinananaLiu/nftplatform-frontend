@@ -12,7 +12,7 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     width: '30%',
-    height: '60%',
+    height: '70%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -123,13 +123,25 @@ const UploadModal = ({ modalVisible, closeModal, handleSave, error }) => {
       </div>
 
       <div className="DescPart">
-        <span className="InputTitleForDesc">Description</span>
-        <span className="InputBoxForDesc">
-          <input
-            className="InputBoxElementForDesc"
-            type="text"
-            id="nftdescription"
-          />
+        <span className="DescElement">
+          <span className="InputTitleForDesc">Description</span>
+          <span className="InputBoxForDesc">
+            <input
+              className="InputBoxElementForDesc"
+              type="text"
+              id="nftdescription"
+            />
+          </span>
+        </span>
+        <span className="DescElement">
+          <span className="InputTitleForDesc">Verification</span>
+          <span className="InputBoxForDesc">
+            <input
+              className="InputBoxElementForDesc"
+              type="text"
+              id="nftverify"
+            />
+          </span>
         </span>
       </div>
 

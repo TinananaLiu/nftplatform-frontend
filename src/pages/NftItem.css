@@ -2,24 +2,25 @@
 .NftContainer {
     background-color: #DBECF5;
     display: flex;
-    width: 60%;
-    height: 50%;
+    width: 80%;
+    height: 75%;
     border: rgb(86, 137, 184) 5px dashed;
     border-radius: 15px;
-    margin-right: 10%;
+    /* margin-right: 10%; */
     margin-top: 2%;
 }
 
 .Image {
-    /* border: rgb(0, 0, 0) 2px solid; */
-    height: 80%;
+    /* border: rgb(255, 0, 0) 2px solid; */
+    height: 55%;
+    margin-top: 2%;
     display: flex;
     justify-content: center; /* 水平居中 */
     align-items: center;     /* 垂直居中 */
 }
 
 .Tags {
-    /* border: rgb(0, 0, 0) 2px solid; */
+    /* border: rgb(0, 243, 117) 2px solid; */
     height: 20%;
     display: flex;
     justify-content: center; /* 水平居中 */
@@ -27,17 +28,18 @@
 }
 
 .Image img {
-    width: 80%;
+    width: 90%;
 }
 
 
 .TagsElement {
     background-color: #ffffff;
-    margin: 0 5%;
+    margin: 0 3%;
     border-radius: 20px;
     font-family: monospace;
+    font-size: larger;
     width: 30%;
-    height: 50%;
+    height: 40%;
     display: flex;
     justify-content: center; /* 水平居中 */
     align-items: center;     /* 垂直居中 */
@@ -47,7 +49,10 @@
     /* border: rgb(0, 0, 0) 2px solid; */
     display: flex;
     flex-direction: column;
-    width: 40%;
+    /* align-items: center; */
+    justify-content: center;
+    width: 35%;
+    margin-left: 1%;
 }
 
 .RightPart {
@@ -55,24 +60,29 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    width: 60%;
+    width: 65%;
     background-color: #ffffff;
+    border-radius: 10px;
     margin: 5% 5% 5% 0;
+    padding: 1% 2% 1% 2%;
 }
 
 .UserInfo {
-    border: rgb(255, 0, 0) 2px solid;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* border: rgb(255, 0, 0) 2px solid; */
+    font-family: 'Kanit', sans-serif;
     height: 20%;
     display: flex;
     align-items: center;
+    font-size: large;
+    /* margin: 2% 0 0 2%; */
 }
 
 .UserPhoto {
     height: 100%;
     display: flex;
     align-items: center;
-    margin: 5% 2% 5% 5%;
+    margin-right: 2%;
+    /* margin: 5% 2% 5% 5%; */
 }
 
 .UserPhoto img {
@@ -82,23 +92,43 @@
 
 
 .ItemName {
-    border: rgb(115, 255, 0) 2px solid;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* border: rgb(115, 255, 0) 2px solid; */
+    font-family: 'Kanit', sans-serif;
     height: 20%;
     display: flex;
     align-items: center;
+    font-size: x-large;
+    padding-left: 2%;
 }
 
 .ItemInfo {
-    border: rgb(255, 0, 0) 2px solid;
+    /* border: rgb(255, 0, 0) 2px solid; */
     display: flex;
     flex-direction: column;
     font-family: monospace;
     height: 60%;
     display: flex;
+    padding-left: 2%;
 }
 
 .InfoElement {
-    border: rgb(0, 0, 0) 2px dashed;
+    /* border: rgb(255, 0, 0) 2px solid; */
     flex-grow: 1;
+    display: flex;
+    /* align-items: center; */
+    font-size: larger;
+}
+
+.InfoElementTitle {
+    display: flex;
+    /* border: rgb(0, 0, 0) 1px dashed; */
+    width: 25%;
+
+
+}
+
+.InfoElementContent {
+    display: flex;
+    /* border: rgb(0, 0, 0) 1px dashed; */
+    width: 75%;
 }

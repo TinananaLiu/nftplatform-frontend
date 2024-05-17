@@ -25,11 +25,11 @@
   display: flex;
   flex: 1;
   justify-content: center;
-  border: rgb(0, 0, 0) 2px dashed;
+  /* border: rgb(0, 0, 0) 2px dashed; */
 }
 
 .UserBarElement {
-  border: rgb(255, 0, 0) 2px dashed;
+  /* border: rgb(255, 0, 0) 2px dashed; */
   display: flex;
   justify-content: end;
   /* height: 80%; */

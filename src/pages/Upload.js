@@ -35,6 +35,7 @@ const UploadPage = () => {
     const institution = document.querySelector('#nftinstitution').value
     const tags = document.querySelector('#nfttags').value
     const description = document.querySelector('#nftdescription').value
+    const verification = document.querySelector('#nftverify').value
     const image = document.querySelector('#nftimage')
     if (!image) {
       setError('no pic')
@@ -52,6 +53,7 @@ const UploadPage = () => {
       institution,
       tags,
       description,
+      verification,
       image: image.src,
       file: file
     }

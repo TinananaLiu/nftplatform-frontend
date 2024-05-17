@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 import './Profile.css'
 import userphoto from './image/userphoto.svg'
 import levelbar from './image/levelbar.svg'
-import token from './image/token.svg'
+import atoken from './image/atoken.svg'
+import ptoken from './image/ptoken.svg'
+import coltoken from './image/coltoken.svg'
+import cretoken from './image/cretoken.svg'
+// import token from './image/token.svg'
 import { styled } from '@mui/material/styles'
 import LinearProgress, {
   linearProgressClasses
@@ -10,6 +14,8 @@ import LinearProgress, {
 
 import Box from '@mui/material/Box'
 import backarrow from './image/backarrow.svg'
+import likeicon from './image/likes.svg'
+import tagicon from './image/tags.svg'
 import { useNavigate } from 'react-router-dom'
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -45,10 +51,21 @@ const ProfilePage = () => {
           <img src={userphoto} alt="userphoto" />
         </span>
         <span className="Info">
-          <span className="InfoItem">User Name</span>
-          <span className="InfoItem">level</span>
-          <span className="InfoItem">some user information</span>
+          <span className="InfoItem">Tinanana</span>
           <span className="InfoItem">
+            <span className="InfoIcon">
+              <img src={likeicon} alt="likes" />
+            </span>
+            <Box sx={{ width: '100%' }}>
+              <BorderLinearProgress variant="determinate" value={progress} />
+            </Box>
+          </span>
+          {/* <span className="InfoItem">level</span>
+          <span className="InfoItem">some user information</span> */}
+          <span className="InfoItem">
+            <span className="InfoIcon">
+              <img src={tagicon} alt="tags" />
+            </span>
             <Box sx={{ width: '100%' }}>
               <BorderLinearProgress variant="determinate" value={progress} />
             </Box>
@@ -58,30 +75,30 @@ const ProfilePage = () => {
 
       <div className="Award">
         <span className="AwardElement">
-          <span className="TokenType">Token 1</span>
+          <span className="TokenType">Academic</span>
           <span className="TokenImg">
-            <img src={token} alt="token" />
+            <img src={atoken} alt="token" />
           </span>
           <span className="TokenNum">#. T1</span>
         </span>
         <span className="AwardElement">
-          <span className="TokenType">Token 2</span>
+          <span className="TokenType">Professional</span>
           <span className="TokenImg">
-            <img src={token} alt="token" />
+            <img src={ptoken} alt="token" />
           </span>
           <span className="TokenNum">#. T2</span>
         </span>
         <span className="AwardElement">
-          <span className="TokenType">Token 3</span>
+          <span className="TokenType">Collaboration</span>
           <span className="TokenImg">
-            <img src={token} alt="token" />
+            <img src={coltoken} alt="token" />
           </span>
           <span className="TokenNum">#. T3</span>
         </span>
         <span className="AwardElement">
-          <span className="TokenType">Token 4</span>
+          <span className="TokenType">Creativity</span>
           <span className="TokenImg">
-            <img src={token} alt="token" />
+            <img src={cretoken} alt="token" />
           </span>
           <span className="TokenNum">#. T4</span>
         </span>

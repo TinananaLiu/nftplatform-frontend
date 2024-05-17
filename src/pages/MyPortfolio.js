@@ -3,6 +3,7 @@ import './MyPortfolio.css'
 import userphoto from './image/userphoto.svg'
 import backarrow from './image/backarrow.svg'
 import { useNavigate } from 'react-router-dom'
+import SwipeableTextMobileStepper from './NftItemStepper'
 
 const MyPortfolioPage = () => {
   const navigateTo = useNavigate()
@@ -24,7 +25,7 @@ const MyPortfolioPage = () => {
           <img src={userphoto} alt="userphoto" />
         </span>
         <span className="MyInfo">
-          <span className="MyInfoItem">User Name</span>
+          <span className="MyInfoItem">Tinanana</span>
           <span className="MyInfoItem">...</span>
           <span className="MyInfoItem">...</span>
           <span className="MyInfoItem">
@@ -36,10 +37,22 @@ const MyPortfolioPage = () => {
       </div>
 
       <div class="PortfolioContainer">
-        <div class="PortfolioItem">Academic Achievements</div>
-        <div class="PortfolioItem">Professional Skills</div>
-        <div class="PortfolioItem">Leader & Teamwork</div>
-        <div class="PortfolioItem">Creative & Personal Development</div>
+        <div class="PortfolioItem">
+          <span>Academic Achievements</span>
+          <SwipeableTextMobileStepper category={'academic'} />
+        </div>
+        <div class="PortfolioItem">
+          <span>Professional Skills</span>
+          <SwipeableTextMobileStepper category={'professional'} />
+        </div>
+        <div class="PortfolioItem">
+          <span>Leadership & Teamwork</span>
+          <SwipeableTextMobileStepper category={'leadership'} />
+        </div>
+        <div class="PortfolioItem">
+          <span>Creative & Personal Development</span>
+          <SwipeableTextMobileStepper category={'creative'} />
+        </div>
       </div>
     </>
   )

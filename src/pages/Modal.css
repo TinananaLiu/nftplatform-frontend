@@ -108,10 +108,18 @@
   /* 下半部分: Description的<div>----------------- */
   .DescPart {
     width: 90%;
-    height: 15%;
+    height: 30%;
     display: flex;
-    /* justify-content: space-between; */
+    flex-direction: column;
+    justify-content: space-between;
     /* border: 2px rgb(0, 0, 0) solid; */
+  }
+
+  .DescElement {
+    /* border: 2px rgb(0, 0, 0) solid; */
+    height: 45%;
+    display: flex;
+    /* margin-top: 3%; */
   }
 
   .InputTitleForDesc {
@@ -121,7 +129,7 @@
   .InputBoxForDesc {
     /* border: 2px rgb(255, 0, 0) solid; */
     width: 72%;
-    margin-right: 5%;
+    margin-right: 2%;
   }
 
   .InputBoxElementForDesc {
