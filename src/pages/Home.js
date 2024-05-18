@@ -11,8 +11,6 @@ const HomePage = () => {
   const navigateTo = useNavigate()
   return (
     <>
-      {/* <div>HomeTest</div> */}
-
       <div className="Introduction">
         <img src={introduction} alt="intro" />
         <span

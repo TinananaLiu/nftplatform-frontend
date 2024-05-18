@@ -1,47 +1,100 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import './GalleryItem.css'
 // import notebook from './image/notebook.svg'
 // import userphoto from './image/userphoto.svg'
 import backarrow from './image/backarrow.svg'
 import { useLocation, useNavigate } from 'react-router-dom'
-// import { getNFTItemByHash } from '../apis/api'
+import { getPersonProfile } from '../apis/api'
 
 const GalleryItemPage = () => {
-  //   // 從網址抓參數 nft_id
-  //   let location = useLocation()
-  //   console.log(location) //search有東西代表有抓到網址參數
+  const location = useLocation()
 
-  //   const [nftId, setNftId] = useState(null)
-  //   const [nftData, setNftData] = useState({
-  //     username: '',
-  //     title: '',
-  //     date: '',
-  //     category: '',
-  //     institution: '',
-  //     description: '',
-  //     tags: ['']
-  //   })
-
-  //   //先從網址抓參數下來(一次性的)
-  //   useEffect(() => {
-  //     const searchParams = new URLSearchParams(location.search)
-  //     const nft_id = searchParams.get('nft_id')
-  //     setNftId(nft_id)
-  //   }, [location])
-
-  //   //抓下參數後就可以向後端拿資料，用use effect是為了防止一直發送後端請求，不然會一直重做這個步驟
-  //   useEffect(() => {
-  //     if (!nftId) return
-  //     getNFTItemByHash(nftId).then(nft_data => {
-  //       console.log(nft_data, nft_data.category)
-  //       setNftData(nft_data)
-  //     })
-  //   }, [nftId])
-
+  const [profile, setProfile] = useState(null)
+  const [resolved, setResolved] = useState(false)
+  const [person, setPerson] = useState('')
   const navigateTo = useNavigate()
 
   const goBack = () => {
     navigateTo(-1) // 回到上一页
+  }
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    const person = searchParams.get('person')
+    if (!person) {
+      setResolved(true)
+      return
+    }
+    setPerson(person)
+    getPersonProfile(person).then(profile => {
+      if (profile) {
+        setProfile(profile)
+      }
+      setResolved(true)
+    })
+  }, [location])
+
+  const RenderPage = () => {
+    if (resolved) {
+      if (!profile) {
+        if (!person) {
+          navigateTo('/gallery')
+        }
+        return (
+          <div
+            style={{
+              fontFamily: 'Kanit',
+              fontWeight: '400',
+              fontSize: '40px',
+              lineHeight: '70px',
+              textAlign: 'start'
+            }}>
+            User specified is not found.
+          </div>
+        )
+      } else {
+        return (
+          <>
+            <div
+              style={{
+                fontFamily: 'Kanit',
+                fontWeight: '500',
+                fontSize: '40px',
+                lineHeight: '70px',
+                textAlign: 'start'
+              }}>
+              {person}'s profile
+            </div>
+            <div className="ProfileGrid">
+              {profile.map((each, map) => {
+                return (
+                  <img
+                    style={{
+                      borderRadius: '1.25rem'
+                    }}
+                    src={each.cover}
+                    alt={each.name}
+                  />
+                )
+              })}
+            </div>
+          </>
+        )
+      }
+    } else {
+      return (
+        <div
+          style={{
+            fontFamily: 'Kanit',
+            fontWeight: '500',
+            fontSize: '40px',
+            lineHeight: '70px',
+            textAlign: 'start'
+          }}>
+          loading...
+        </div>
+      )
+    }
   }
 
   return (
@@ -50,7 +103,13 @@ const GalleryItemPage = () => {
         <img src={backarrow} alt="back" onClick={goBack} />
       </div>
 
-      <div className="GalleryItemContainer"></div>
+      <div
+        style={{
+          width: '90%',
+          // height: '100vh'
+        }}>
+        <RenderPage />
+      </div>
     </>
   )
 }

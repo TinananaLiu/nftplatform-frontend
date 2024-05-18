@@ -1,0 +1,174 @@
+
+.TwoButton {
+  display: flex;
+  justify-content: center;
+  align-items: end;  
+  /* border: 2px red solid; */
+  /* justify-content:space-evenly; */
+}
+
+.SaveButton {
+  background-color: #000000;
+  color: white;
+  border-radius: 30px;
+  /* border: 2px red solid; */
+  width: 80px;
+  height: 30px;
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center;     /* 垂直居中 */
+  margin: 0 5% 0 0;
+}
+
+.EditButton {
+  background-color: #ffffff;
+  color: #828282;
+  border-radius: 30px;
+  /* border: 2px red solid; */
+  width: 80px;
+  height: 30px;
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center;     /* 垂直居中 */
+  margin: 0 0 0 5%;
+}
+
+.Close {
+  display: flex;
+  /* justify-content: end; */
+  /* border: 2px red solid; */
+  align-self: flex-end;
+}
+
+.UpperRight {
+  /* border: 2px rgb(21, 0, 255) dashed; */
+  display: flex;
+  flex-direction: column;
+  /* width: 120px; */
+  justify-content: center; 
+  align-items: center;
+  width: 30%;
+}
+
+.PlusImage {
+  border: 1px gray solid;
+  background-color: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center;     /* 垂直居中 */
+  width: 100px;
+  height: 120px;
+}
+
+.Avatar {
+  width: 100%;
+}
+
+.UpperPart {
+  /* border: 2px red solid; */
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.UpperLeft {
+  display: flex;
+  flex-direction: column;
+  /* border: 2px rgb(4, 0, 255) dashed; */
+  width: 70%;
+  margin-right: 5%;
+  justify-content: space-between;
+}
+
+.InputItem {
+  /* border: 2px rgb(229, 255, 0) solid; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.InputTitle {
+  /* border: 2px rgb(8, 128, 20) solid; */
+  width: 40%;
+}
+
+.InputBox {
+  /* border: 2px rgb(7, 153, 14) solid; */
+  display: flex;
+  justify-content: flex-end;
+  width: 60%;
+}
+
+.InputBoxElement {
+  width: 100%;
+}
+
+/* 下半部分: Description的<div>----------------- */
+.DescPart {
+  width: 90%;
+  height: 15%;
+  display: flex;
+  /* justify-content: space-between; */
+  /* border: 2px rgb(0, 0, 0) solid; */
+}
+
+.InputTitleForDesc {
+  /* border: 2px rgb(235, 139, 28) solid; */
+  width: 28%;
+}
+.InputBoxForDesc {
+  /* border: 2px rgb(255, 0, 0) solid; */
+  width: 72%;
+  margin-right: 5%;
+}
+
+.InputBoxElementForDesc {
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 1000px) {
+  .UpperPart {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .InputItem {
+    flex-direction: column;
+    align-items: center;
+    /* border: 2px solid blue; */
+    width: 100%;
+  }
+
+  .InputTitle {
+    width: 100%;
+    /* border: 2px solid red; */
+  }
+
+  .InputBox {
+    width: 100%;
+    /* border: 2px solid red; */
+  }
+
+  .DescPart {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .InputTitleForDesc {
+    width: 100%;
+  }
+  
+  .InputBoxForDesc {
+    width: 100%;
+    min-height: 200px;
+  }
+
+  .UpperRight {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Modal from 'react-modal'
 import closex from './image/closex.svg'
 import plus from './image/plus.svg'
-import './Modal.css'
+import './UploadModal.css'
 import { colors } from '@mui/material'
 
 const customStyles = {
@@ -16,10 +16,8 @@ const customStyles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    // marginRight: "-50%",
     transform: 'translate(-50%, -50%)',
     fontFamily: 'Kanit, sans-serif',
-    // font-family: 'Kanit', sans-serif;
     alignItems: 'center',
     backgroundColor: '#9FCAE3'
   }

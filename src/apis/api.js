@@ -1,3 +1,8 @@
+import avatar1 from '../pages/image/userphoto.svg'
+import avatar2 from '../pages/image/user2.svg'
+import cover1 from '../pages/image/cover1.svg'
+import cover2 from '../pages/image/cover2.svg'
+
 const delay = time => {
   return new Promise(resolve => setTimeout(resolve, time))
 }
@@ -46,6 +51,13 @@ const updatePassword = async payload => {
   return true
 }
 
+const getPersonProfile = async person => {
+  await delay(500)
+
+  const profile = MockProfileItems[person]
+  return profile
+}
+
 const UserDatabase = {
   tina: {
     username: 'tina',
@@ -68,10 +80,59 @@ const MockNFTItem = {
   }
 }
 
+const MockProfileItems = {
+  tina: [
+    {
+      avatar: avatar1,
+      cover: cover1,
+      name: 'Cute Nyan Cat😍'
+    },
+    {
+      avatar: avatar1,
+      cover: cover1,
+      name: 'Cute Nyan Cat😍'
+    },
+    {
+      avatar: avatar1,
+      cover: cover1,
+      name: 'Cute Nyan Cat😍'
+    },
+    {
+      avatar: avatar1,
+      cover: cover1,
+      name: 'Cute Nyan Cat😍'
+    },
+    {
+      avatar: avatar1,
+      cover: cover1,
+      name: 'Cute Nyan Cat😍'
+    }
+  ],
+  handsome: [
+    {
+      userId: 2,
+      username: 'user2',
+      avatar: avatar2,
+      cover: cover2,
+      name: 'Cat Lover'
+    }
+  ],
+  kakkoii: [
+    {
+      userId: 3,
+      username: 'user3',
+      avatar: avatar2,
+      cover: cover2,
+      name: 'Hiiiiii'
+    }
+  ]
+}
+
 export {
   uploadProfileToBackend,
   getNFTItemByHash,
   login,
   logout,
-  updatePassword
+  updatePassword,
+  getPersonProfile
 }
