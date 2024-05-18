@@ -3,7 +3,7 @@
     background-color: #DBECF5;
     display: flex;
     width: 80%;
-    height: 75%;
+    /* height: 75%; */
     border: rgb(86, 137, 184) 5px dashed;
     border-radius: 15px;
     /* margin-right: 10%; */
@@ -106,7 +106,7 @@
     display: flex;
     flex-direction: column;
     font-family: monospace;
-    height: 60%;
+    /* height: 60%; */
     display: flex;
     padding-left: 2%;
 }
@@ -131,4 +131,5 @@
     display: flex;
     /* border: rgb(0, 0, 0) 1px dashed; */
     width: 75%;
+    white-space: pre-line;
 }

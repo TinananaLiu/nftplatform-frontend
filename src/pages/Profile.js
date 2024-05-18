@@ -15,21 +15,21 @@ import LinearProgress, {
 import Box from '@mui/material/Box'
 import backarrow from './image/backarrow.svg'
 import likeicon from './image/likes.svg'
-import tagicon from './image/tags.svg'
+import rankicon from './image/crown.svg'
 import { useNavigate } from 'react-router-dom'
 
-const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  height: 20,
-  borderRadius: 10,
-  [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor:
-      theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800]
-  },
-  [`& .${linearProgressClasses.bar}`]: {
-    borderRadius: 10,
-    backgroundColor: theme.palette.mode === 'light' ? '#EC6264' : '#308fe8'
-  }
-}))
+// const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+//   height: 20,
+//   borderRadius: 10,
+//   [`&.${linearProgressClasses.colorPrimary}`]: {
+//     backgroundColor:
+//       theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800]
+//   },
+//   [`& .${linearProgressClasses.bar}`]: {
+//     borderRadius: 10,
+//     backgroundColor: theme.palette.mode === 'light' ? '#EC6264' : '#308fe8'
+//   }
+// }))
 
 const ProfilePage = () => {
   const [progress, setProgress] = useState(50)
@@ -56,19 +56,21 @@ const ProfilePage = () => {
             <span className="InfoIcon">
               <img src={likeicon} alt="likes" />
             </span>
-            <Box sx={{ width: '100%' }}>
+            <span className="InfoNum">number of likes</span>
+            {/* <Box sx={{ width: '100%' }}>
               <BorderLinearProgress variant="determinate" value={progress} />
-            </Box>
+            </Box> */}
           </span>
           {/* <span className="InfoItem">level</span>
           <span className="InfoItem">some user information</span> */}
           <span className="InfoItem">
             <span className="InfoIcon">
-              <img src={tagicon} alt="tags" />
+              <img src={rankicon} alt="ranking" />
             </span>
-            <Box sx={{ width: '100%' }}>
+            <span className="InfoNum">ranking</span>
+            {/* <Box sx={{ width: '100%' }}>
               <BorderLinearProgress variant="determinate" value={progress} />
-            </Box>
+            </Box> */}
           </span>
         </span>
       </div>

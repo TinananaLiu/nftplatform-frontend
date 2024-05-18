@@ -41,7 +41,7 @@
     display: flex;
     align-items: center;
     /* border: rgb(230, 67, 67) 1px dashed; */
-    font-size: x-large;
+    font-size: xx-large;
     font-weight: bold;
 }
 
@@ -59,6 +59,12 @@
     /* display: flex;
     justify-content: center;
     align-items: center;  */
+}
+
+.InfoNum {
+    font-size: medium;
+    font-weight: bold;
+    color: #818181;
 }
 
 .LevelBar {

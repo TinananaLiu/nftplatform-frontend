@@ -46,7 +46,13 @@ const UploadModal = ({ modalVisible, closeModal, handleSave, error }) => {
           <span className="InputItem">
             <span className="InputTitle">Title</span>
             <span className="InputBox">
-              <input className="InputBoxElement" type="text" id="nfttitle" />
+              <input
+                required="required"
+                onInvalid="alert('input')"
+                className="InputBoxElement"
+                type="text"
+                id="nfttitle"
+              />
             </span>
           </span>
           <span className="InputItem">
@@ -58,7 +64,13 @@ const UploadModal = ({ modalVisible, closeModal, handleSave, error }) => {
           <span className="InputItem">
             <span className="InputTitle">Category</span>
             <span className="InputBox">
-              <input className="InputBoxElement" type="text" id="nftcategory" />
+              <select className="InputBoxElement" id="nftcategory">
+                <option value="category1">Academic</option>
+                <option value="category2">Professional</option>
+                <option value="category3">Collaboration</option>
+                <option value="category4">Creativity</option>
+              </select>
+              {/* <input className="InputBoxElement" type="text" id="nftcategory" /> */}
             </span>
           </span>
           <span className="InputItem">
@@ -124,9 +136,9 @@ const UploadModal = ({ modalVisible, closeModal, handleSave, error }) => {
         <span className="DescElement">
           <span className="InputTitleForDesc">Description</span>
           <span className="InputBoxForDesc">
-            <input
+            <textarea
+              style={{ resize: 'none' }}
               className="InputBoxElementForDesc"
-              type="text"
               id="nftdescription"
             />
           </span>
@@ -134,9 +146,9 @@ const UploadModal = ({ modalVisible, closeModal, handleSave, error }) => {
         <span className="DescElement">
           <span className="InputTitleForDesc">Verification</span>
           <span className="InputBoxForDesc">
-            <input
+            <textarea
+              style={{ resize: 'none' }}
               className="InputBoxElementForDesc"
-              type="text"
               id="nftverify"
             />
           </span>

@@ -4,8 +4,23 @@ import userphoto from './image/userphoto.svg'
 import backarrow from './image/backarrow.svg'
 import { useNavigate } from 'react-router-dom'
 import SwipeableTextMobileStepper from './NftItemStepper'
+import IconButton from '@mui/material/IconButton'
+import Button from '@mui/material/Button'
+import EditIcon from '@mui/icons-material/Edit'
+import { useState } from 'react'
 
 const MyPortfolioPage = () => {
+  const [moodText, setMoodText] = useState('Type anything...')
+  const [editing, setEditing] = useState(false)
+
+  const editMood = () => {
+    const newMoodText = prompt('Enter your mood:')
+    if (newMoodText !== null) {
+      setMoodText(newMoodText)
+      setEditing(true)
+    }
+  }
+
   const navigateTo = useNavigate()
 
   const goBack = () => {
@@ -26,13 +41,35 @@ const MyPortfolioPage = () => {
         </span>
         <span className="MyInfo">
           <span className="MyInfoItem">Tinanana</span>
-          <span className="MyInfoItem">...</span>
-          <span className="MyInfoItem">...</span>
           <span className="MyInfoItem">
-            {/* <Box sx={{ width: '100%' }}>
-              <BorderLinearProgress variant="determinate" value={progress} />
-            </Box> */}
+            <div className={`mood-container ${editing ? 'editing' : ''}`}>
+              <IconButton aria-label="edit">
+                <EditIcon onClick={editMood} />
+              </IconButton>
+              <span
+                id="mood-text"
+                className={
+                  moodText === 'Type anything...' ? 'default-text' : ''
+                }
+                style={{ width: '50%' }}>
+                {moodText}
+              </span>
+
+              {/* <Button variant="contained" onClick={editMood}>
+                Edit
+              </Button> */}
+            </div>
+            {/* <span className=''>..............</span>
+            <IconButton aria-label="edit">
+              <EditIcon />
+            </IconButton> */}
           </span>
+          {/* <span className="MyInfoItem">...</span>
+          <span className="MyInfoItem">
+            <Box sx={{ width: '100%' }}>
+              <BorderLinearProgress variant="determinate" value={progress} />
+            </Box>
+          </span> */}
         </span>
       </div>
 

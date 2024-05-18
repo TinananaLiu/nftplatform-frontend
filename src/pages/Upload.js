@@ -38,7 +38,7 @@ const UploadPage = () => {
     const verification = document.querySelector('#nftverify').value
     const image = document.querySelector('#nftimage')
     if (!image) {
-      setError('no pic')
+      setError('no image')
       return
     }
     if (!file) {

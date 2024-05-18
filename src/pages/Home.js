@@ -12,12 +12,16 @@ const HomePage = () => {
   return (
     <>
       <div className="Introduction">
-        <img src={introduction} alt="intro" />
-        <span
-          className="StartToUpload"
+        <img
+          src={introduction}
+          alt="intro"
           onClick={() => {
             navigateTo('/upload')
-          }}></span>
+          }}
+        />
+        {/* <span
+          className="StartToUpload"
+          ></span> */}
       </div>
 
       <div className="Feature">

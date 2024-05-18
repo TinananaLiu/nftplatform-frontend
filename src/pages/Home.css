@@ -12,14 +12,6 @@
     height: 100%;
 }
 
-.StartToUpload {
-    /* border: rgb(35, 182, 255) 2px solid; */
-    position: absolute;
-    width: 30%;
-    height: 10%;
-    top: 68%; /* 从容器顶部开始 */
-    left: 8%; /* 从容器左侧开始 */
-}
 
 .Feature {
     /* border: rgb(0, 0, 0) 2px solid; */

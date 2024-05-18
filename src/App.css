@@ -8,6 +8,7 @@
   width: 20%;
   max-width: 180px;
   background-color: #9FCAE3;
+  
 }
 
 
@@ -75,6 +76,12 @@
   flex-direction: column;
   align-items: center;
   height: 30%;
+  user-select: none;
+}
+
+.Function::selection {
+  background: transparent;
+  color: inherit;
 }
 
 .FunctionElement {
