@@ -27,8 +27,9 @@ const UploadPage = () => {
     setModalVisible(true)
   }
 
-  const handleSave = async () => {
+  const handleSave = async (e) => {
     // 把這些內容都取出來
+    e.preventDefault()
     const title = document.querySelector('#nfttitle').value
     const date = document.querySelector('#nftdate').value
     const category = document.querySelector('#nftcategory').value
@@ -37,6 +38,7 @@ const UploadPage = () => {
     const description = document.querySelector('#nftdescription').value
     const verification = document.querySelector('#nftverify').value
     const image = document.querySelector('#nftimage')
+    console.log(image)
     if (!image) {
       setError('no image')
       return
@@ -45,7 +47,7 @@ const UploadPage = () => {
       setError('no file')
       return
     }
-
+    
     const payload = {
       title,
       date,
