@@ -30,10 +30,11 @@ const UploadPage = () => {
   const handleSave = async () => {
     // 把這些內容都取出來
     const title = document.querySelector('#nfttitle').value
-    const date = document.querySelector('#nftdate').value
+    // const date = document.querySelector('#nftdate').value
     const category = document.querySelector('#nftcategory').value
     const institution = document.querySelector('#nftinstitution').value
-    const tags = document.querySelector('#nfttags').value
+    const tag1 = document.querySelector('#nfttag1').value
+    const tag2 = document.querySelector('#nfttag2').value
     const description = document.querySelector('#nftdescription').value
     const verification = document.querySelector('#nftverify').value
     const image = document.querySelector('#nftimage')
@@ -48,10 +49,9 @@ const UploadPage = () => {
 
     const payload = {
       title,
-      date,
       category,
       institution,
-      tags,
+      tags: [tag1, tag2],
       description,
       verification,
       image: image.src,

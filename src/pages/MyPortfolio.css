@@ -2,15 +2,15 @@
     /* border: rgb(0, 0, 0) 1px dashed; */
     font-family: 'Kanit', sans-serif;
     display: flex;
-    width: 50%;
+    width: 70%;
     height: 20%;
     align-items: center;
-    margin: 0 20% 2% 5%;
+    margin: 0 0 2% 0;
 }
 
 .MyPhoto {
     /* border: rgb(230, 67, 67) 1px dashed; */
-    width: 30%;
+    width: 20%;
     height: 100%;
     display: flex;
     /* justify-content: center; */
@@ -27,19 +27,32 @@
     /* border: rgb(230, 67, 67) 1px dashed; */
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 80%;
     height: 100%;
     text-align: left;
-    margin-left: 3%;
+    /* margin-left: 3%; */
+}
+
+.MyInfoName {
+    height: 60%;
+    display: flex;
+    align-items: center;
+    font-size: xx-large;
+    font-weight: bold;
+    /* color: #1B3973; */
+    /* border: rgb(230, 67, 67) 1px dashed; */
 }
 
 .MyInfoItem {
-    flex-grow: 1;
     display: flex;
+    height: 40%;
     align-items: center;
     font-size: x-large;
-    font-weight: bold;
-    /* color: #1B3973; */
+    /* font-weight: bold; */
+    color: #6e6f70;
+    /* border: rgb(230, 67, 67) 1px dashed; */
+    margin-left: 1%;
+    font-family: monospace;
 }
 
 

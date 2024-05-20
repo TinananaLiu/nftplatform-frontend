@@ -72,7 +72,7 @@ const MockNFTItem = {
     username: 'Tinananana test',
     title: 'Class notes test',
     date: '2023/05/01 test',
-    category: 'Education test',
+    category: 'Academic',
     institution: 'NTU test',
     description: `notes for E&I class 
 test

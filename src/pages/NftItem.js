@@ -6,6 +6,9 @@ import backarrow from './image/backarrow.svg'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { getNFTItemByHash } from '../apis/api'
 
+import Button from '@mui/material/Button'
+import DeleteIcon from '@mui/icons-material/Delete'
+
 const NftItemPage = () => {
   // 從網址抓參數 nft_id
   let location = useLocation()
@@ -68,6 +71,28 @@ const NftItemPage = () => {
                 </span>
               )
             })}
+          </span>
+          <span className="Delete">
+            <Button
+              variant="contained"
+              startIcon={<DeleteIcon />}
+              sx={{
+                height: '50%',
+                mt: 3,
+                mb: 2,
+                backgroundColor: '#9FCAE3',
+                color: 'black',
+                fontFamily: 'Kanit',
+                '&:hover': {
+                  color: '#bc2d2d',
+                  backgroundColor: 'white' // 自定义鼠标悬停时的背景颜色
+                }
+              }}
+              onClick={() => {
+                //要跳出確認刪除的提示框 然後再打到後端去刪除這個nft
+              }}>
+              Delete
+            </Button>
           </span>
         </span>
         <span className="RightPart">

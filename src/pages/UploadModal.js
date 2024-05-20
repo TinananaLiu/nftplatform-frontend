@@ -56,12 +56,6 @@ const UploadModal = ({ modalVisible, closeModal, handleSave, error }) => {
             </span>
           </span>
           <span className="InputItem">
-            <span className="InputTitle">Date</span>
-            <span className="InputBox">
-              <input className="InputBoxElement" type="text" id="nftdate" />
-            </span>
-          </span>
-          <span className="InputItem">
             <span className="InputTitle">Category</span>
             <span className="InputBox">
               <select className="InputBoxElement" id="nftcategory">
@@ -84,9 +78,15 @@ const UploadModal = ({ modalVisible, closeModal, handleSave, error }) => {
             </span>
           </span>
           <span className="InputItem">
-            <span className="InputTitle">Tags</span>
+            <span className="InputTitle">Tag1</span>
             <span className="InputBox">
-              <input className="InputBoxElement" type="text" id="nfttags" />
+              <input className="InputBoxElement" type="text" id="nfttag1" />
+            </span>
+          </span>
+          <span className="InputItem">
+            <span className="InputTitle">Tag2</span>
+            <span className="InputBox">
+              <input className="InputBoxElement" type="text" id="nfttag2" />
             </span>
           </span>
         </div>

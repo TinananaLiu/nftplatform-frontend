@@ -47,6 +47,30 @@ const HomePage = () => {
           </span>
         </span>
       </div>
+
+      <div className="Feature">
+        <span className="FeatureTitle">Function Overview</span>
+        <span className="FeaturePart">
+          <span className="FeatureElement">
+            <span className="FeatureImg">
+              <img src={feature1} alt="f1" />
+            </span>
+            <span className="FeatureText">Lifetime Learning Ledger</span>
+          </span>
+          <span className="FeatureElement">
+            <span className="FeatureImg">
+              <img src={feature2} alt="f2" />
+            </span>
+            <span className="FeatureText">NFT-Enabled Vertification</span>
+          </span>
+          <span className="FeatureElement">
+            <span className="FeatureImg">
+              <img src={feature3} alt="f3" />
+            </span>
+            <span className="FeatureText">Trust-Driven Reward System</span>
+          </span>
+        </span>
+      </div>
     </>
   )
 }

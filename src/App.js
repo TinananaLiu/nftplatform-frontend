@@ -111,9 +111,6 @@ function App() {
         {location !== '/signup' &&
           location !== '/signin' &&
           location !== '/changepassword' && (
-            // <div id="userbar" className="UserBar">
-            //   {/* Userbar content */}
-            // </div>
             <div id="userbar" className="UserBar">
               <span className="UserBarElement">
                 {signInContext.loggedIn ? (
@@ -130,7 +127,8 @@ function App() {
                         marginRight: '2%',
                         fontFamily: 'Kanit',
                         '&:hover': {
-                          backgroundColor: '#93aebd' // 自定义鼠标悬停时的背景颜色
+                          color: '#1B3973',
+                          backgroundColor: 'white' // 自定义鼠标悬停时的背景颜色
                         }
                       }}
                       onClick={() => {
@@ -160,7 +158,8 @@ function App() {
                       marginRight: '2%',
                       fontFamily: 'Kanit',
                       '&:hover': {
-                        backgroundColor: '#93aebd' // 自定义鼠标悬停时的背景颜色
+                        color: '#1B3973',
+                        backgroundColor: 'white' // 自定义鼠标悬停时的背景颜色
                       }
                     }}
                     onClick={() => {
@@ -173,9 +172,13 @@ function App() {
             </div>
           )}
 
-        <div style={{
-          // border: "2px solid red"
-        }}  className="PageContent">
+        <div
+          style={
+            {
+              // border: "2px solid red"
+            }
+          }
+          className="PageContent">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/upload" element={<UploadPage />} />
