@@ -134,7 +134,7 @@ const GalleryPage = () => {
             </Grid>
           ))}
         </Grid>
-      </Box> */}
+        </Box> */}
 
       <div className="GalleryContainer">
         {portfolios.map(portfolio => (
