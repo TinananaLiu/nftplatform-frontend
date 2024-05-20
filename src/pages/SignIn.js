@@ -44,7 +44,7 @@ export default function SignIn() {
     const userpassword = document.querySelector('#userpassword').value
 
     const result = await signInContext.login({
-      username: useremail,
+      email: useremail,
       password: userpassword
     })
 

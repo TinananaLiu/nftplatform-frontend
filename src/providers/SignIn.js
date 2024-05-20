@@ -23,9 +23,11 @@ const SignInProvider = ({ children }) => {
     if (result) {
       setLoggedIn(true)
       setInfo({
-        username: result.username
+        username: result.username,
+        image: result.image,
+        jwt: result.jwt
       })
-      if (result.firstTime) {
+      if (!result.pwd_change) {
         return 1
       } else {
         return 2

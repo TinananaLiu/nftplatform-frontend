@@ -67,13 +67,14 @@ const GalleryItemPage = () => {
             </div>
             <div className="ProfileGrid">
               {profile.map((each, map) => {
+                console.log('each', each)
                 return (
                   <img
                     style={{
                       borderRadius: '1.25rem'
                     }}
                     src={each.cover}
-                    alt={each.name}
+                    onClick={() => navigateTo('/nftitem?nft_id=' + each.nft_id)}
                   />
                 )
               })}
@@ -105,7 +106,7 @@ const GalleryItemPage = () => {
 
       <div
         style={{
-          width: '90%',
+          width: '90%'
           // height: '100vh'
         }}>
         <RenderPage />
