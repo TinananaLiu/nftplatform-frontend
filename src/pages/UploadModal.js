@@ -11,8 +11,8 @@ const customStyles = {
     left: '50%',
     right: 'auto',
     bottom: 'auto',
-    width: '30%',
-    height: '70%',
+    width: '25%',
+    height: '50%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -40,15 +40,14 @@ const UploadModal = ({ modalVisible, closeModal, handleSave, error }) => {
       <div className="Close" onClick={handleModalClose}>
         <img src={closex} className="CloseX" alt="closex" />
       </div>
-
+      <form onSubmit={handleSave} style={{width: '100%' , height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
       <div className="UpperPart">
         <div className="UpperLeft">
           <span className="InputItem">
             <span className="InputTitle">Title</span>
             <span className="InputBox">
               <input
-                required="required"
-                onInvalid="alert('input')"
+                required
                 className="InputBoxElement"
                 type="text"
                 id="nfttitle"
@@ -178,11 +177,12 @@ const UploadModal = ({ modalVisible, closeModal, handleSave, error }) => {
       </div>
 
       <div className="TwoButton">
-        <div className="SaveButton" onClick={handleSave}>
-          Save
-        </div>
+        <input className="SaveButton" type='submit' >
+          
+        </input>
         {/* <div className="EditButton">Edit</div> */}
       </div>
+      </form>
     </Modal>
   )
 }
