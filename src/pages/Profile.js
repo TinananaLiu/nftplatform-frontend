@@ -1,22 +1,15 @@
 import React, { useState } from 'react'
 import './Profile.css'
 import userphoto from './image/userphoto.svg'
-import levelbar from './image/levelbar.svg'
 import atoken from './image/atoken.svg'
 import ptoken from './image/ptoken.svg'
 import coltoken from './image/coltoken.svg'
 import cretoken from './image/cretoken.svg'
-// import token from './image/token.svg'
-import { styled } from '@mui/material/styles'
-import LinearProgress, {
-  linearProgressClasses
-} from '@mui/material/LinearProgress'
-
-import Box from '@mui/material/Box'
 import backarrow from './image/backarrow.svg'
 import likeicon from './image/likes.svg'
 import rankicon from './image/crown.svg'
 import { useNavigate } from 'react-router-dom'
+import { useSignIn } from '../providers/SignIn'
 
 // const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 //   height: 20,
@@ -34,6 +27,7 @@ import { useNavigate } from 'react-router-dom'
 const ProfilePage = () => {
   const [progress, setProgress] = useState(50)
   const navigateTo = useNavigate()
+  const { info: my_info } = useSignIn()
 
   const goBack = () => {
     navigateTo(-1) // 回到上一页
@@ -48,18 +42,23 @@ const ProfilePage = () => {
 
       <div className="UserPart">
         <span className="Photo">
-          <img src={userphoto} alt="userphoto" />
+          <img
+            src={my_info.image ? my_info.image : userphoto}
+            style={{
+              height: '100%'
+            }}
+            alt="userphoto"
+          />
         </span>
         <span className="Info">
-          <span className="InfoItem">Tinanana</span>
+          <span className="InfoItem">
+            {my_info.username ? my_info.username : 'Tinanana'}
+          </span>
           <span className="InfoItem">
             <span className="InfoIcon">
               <img src={likeicon} alt="likes" />
             </span>
             <span className="InfoNum">number of likes</span>
-            {/* <Box sx={{ width: '100%' }}>
-              <BorderLinearProgress variant="determinate" value={progress} />
-            </Box> */}
           </span>
           {/* <span className="InfoItem">level</span>
           <span className="InfoItem">some user information</span> */}
@@ -78,29 +77,29 @@ const ProfilePage = () => {
       <div className="Award">
         <span className="AwardElement">
           <span className="TokenType">Academic</span>
-          <span className="TokenImg">
-            <img src={atoken} alt="token" />
+          <span className="TokenImgContainer">
+            <img className="TokenImg" src={atoken} alt="token" />
           </span>
           <span className="TokenNum">#. T1</span>
         </span>
         <span className="AwardElement">
           <span className="TokenType">Professional</span>
-          <span className="TokenImg">
-            <img src={ptoken} alt="token" />
+          <span className="TokenImgContainer">
+            <img className="TokenImg" src={ptoken} alt="token" />
           </span>
           <span className="TokenNum">#. T2</span>
         </span>
         <span className="AwardElement">
           <span className="TokenType">Collaboration</span>
-          <span className="TokenImg">
-            <img src={coltoken} alt="token" />
+          <span className="TokenImgContainer">
+            <img className="TokenImg" src={coltoken} alt="token" />
           </span>
           <span className="TokenNum">#. T3</span>
         </span>
         <span className="AwardElement">
           <span className="TokenType">Creativity</span>
-          <span className="TokenImg">
-            <img src={cretoken} alt="token" />
+          <span className="TokenImgContainer">
+            <img className="TokenImg" src={cretoken} alt="token" />
           </span>
           <span className="TokenNum">#. T4</span>
         </span>

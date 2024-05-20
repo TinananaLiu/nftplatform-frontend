@@ -1,88 +1,93 @@
 .MyUserPart {
-    /* border: rgb(0, 0, 0) 1px dashed; */
-    font-family: 'Kanit', sans-serif;
-    display: flex;
-    width: 70%;
-    height: 20%;
-    align-items: center;
-    margin: 0 0 2% 0;
+  /* border: rgb(0, 0, 0) 1px dashed; */
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+  width: 70%;
+  height: 50%;
+  align-items: center;
+  margin: 0 0 2% 0;
 }
 
 .MyPhoto {
-    /* border: rgb(230, 67, 67) 1px dashed; */
-    width: 20%;
-    height: 100%;
-    display: flex;
-    /* justify-content: center; */
-    /* align-items: center; */
-    text-align: left;
+  min-width: 100px;
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  max-width: 190px;
+  text-align: left;
 }
 
 .MyPhoto img {
-    height: 100%;
-    /* width: 100%; */
+  height: 100%;
 }
 
 .MyInfo {
-    /* border: rgb(230, 67, 67) 1px dashed; */
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    height: 100%;
-    text-align: left;
-    /* margin-left: 3%; */
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  text-align: left;
 }
 
 .MyInfoName {
-    height: 60%;
-    display: flex;
-    align-items: center;
-    font-size: xx-large;
-    font-weight: bold;
-    /* color: #1B3973; */
-    /* border: rgb(230, 67, 67) 1px dashed; */
+  height: 60%;
+  display: flex;
+  align-items: center;
+  font-size: xx-large;
+  font-weight: bold;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
 }
 
 .MyInfoItem {
-    display: flex;
-    height: 40%;
-    align-items: center;
-    font-size: x-large;
-    /* font-weight: bold; */
-    color: #6e6f70;
-    /* border: rgb(230, 67, 67) 1px dashed; */
-    margin-left: 1%;
-    font-family: monospace;
+  display: flex;
+  align-items: center;
+  font-size: x-large;
+  color: #6e6f70;
+  margin-left: 1%;
+  font-family: monospace;
 }
 
-
 .PortfolioContainer {
-    border: rgb(0, 0, 0) 1px dashed;
-    display: grid;
-    width: 70%;
-    height: 70%;
-    grid-template-columns: 50% 50%; /* 将容器分成两列，每列占据父容器的50%宽度 */
-    grid-template-rows: 50% 50%; /* 将容器分成两行，每行占据父容器的50%高度 */
-    gap: 1%;
-  }
-  
-  .PortfolioItem {
+  display: grid;
+  width: 70%;
+  height: 70%;
+  grid-template-columns: 50% 50%; /* 将容器分成两列，每列占据父容器的50%宽度 */
+  grid-template-rows: 50% 50%; /* 将容器分成两行，每行占据父容器的50%高度 */
+  gap: 1%;
+}
+
+.PortfolioItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #dfeff6;
+  border-radius: 30px;
+  width: 99%;
+  height: 90%;
+  font-family: 'Kanit', sans-serif;
+  padding-top: 3%;
+  /* font-size: x-large; */
+  font-weight: bold;
+  color: #1b3973;
+  /* object-fit: contain; */
+  /* padding: 5%; */
+}
+
+.Stepper {
+  height: 30%;
+}
+
+@media (max-width: 500px) {
+  .PortfolioContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    background-color: #dfeff6;
-    border-radius: 30px;
-    width: 99%;
-    height: 90%;
-    font-family: 'Kanit', sans-serif;
-    padding-top: 3%;
-    /* font-size: x-large; */
-    font-weight: bold;
-    color: #1B3973;
-    /* object-fit: contain; */
-    /* padding: 5%; */
   }
 
-  .Stepper {
-    height: 30%;
+  .PortfolioItem {
+    margin: 1rem 0 1rem 0;
   }
+
+  .MyInfo {
+    height: 75%;
+  }
+}

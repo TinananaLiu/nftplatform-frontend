@@ -14,11 +14,11 @@ import ChangePwdPage from './pages/ChangePwd'
 
 import { Route, Routes } from 'react-router-dom'
 import logo from './pages/image/logo.svg'
+import userphoto from './pages/image/userphoto.svg'
 import homeicon from './pages/image/homeicon.svg'
 import portfolioicon from './pages/image/portfolioicon.svg'
 import galleryicon from './pages/image/galleryicon.svg'
 import uploadicon from './pages/image/uploadicon.svg'
-import userphoto from './pages/image/userphoto.svg'
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
@@ -28,8 +28,12 @@ import { useSignIn } from './providers/SignIn'
 const hoverColor = '#D9D9D9'
 
 function App() {
-  let location = useLocation().pathname
+  const location = useLocation().pathname
   const navigateTo = useNavigate()
+
+  const { info: my_info } = useSignIn()
+
+  console.log(my_info)
 
   const signInContext = useSignIn()
 
@@ -137,13 +141,22 @@ function App() {
                       }}>
                       Log out
                     </Button>
-                    <img
-                      src={userphoto}
-                      alt="userphoto"
-                      onClick={() => {
-                        navigateTo('/profile')
-                      }}
-                    />
+                    <div
+                      style={{
+                        height: '50px',
+                        paddingTop: '8px'
+                      }}>
+                      <img
+                        style={{
+                          height: '100%'
+                        }}
+                        src={my_info.image ? my_info.image : userphoto}
+                        alt="userphoto"
+                        onClick={() => {
+                          navigateTo('/profile')
+                        }}
+                      />
+                    </div>
                   </>
                 ) : (
                   <Button
