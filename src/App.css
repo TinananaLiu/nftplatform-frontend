@@ -6,9 +6,9 @@
 
 .Sidebar {
   width: 20%;
-  max-width: 180px;
+  min-width: 180px;
+  max-width: 185px;
   background-color: #9FCAE3;
-  
 }
 
 
@@ -34,6 +34,7 @@
   flex: 1;
   justify-content: center;
   /* border: rgb(0, 0, 0) 2px dashed; */
+  max-height: 80px;
 }
 
 .UserBarElement {
@@ -41,7 +42,7 @@
   display: flex;
   justify-content: end;
   width: 80%;
-  margin-top: 2%;
+  /* margin-top: 2%; */
 }
 
 .UserPhoto img {
