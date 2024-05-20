@@ -45,7 +45,7 @@ const portfolios = [
   },
   {
     userId: 4,
-    username: 'Happy',
+    username: 'Brian GT Wu',
     avatar: avatar2,
     cover: cover2
     // name: 'Hiiiiii'
@@ -72,14 +72,23 @@ const GalleryPage = () => {
         <img src={backarrow} alt="back" onClick={goBack} />
       </div>
 
-      <Box
+      {/* <Box
         sx={{
           flexGrow: 1,
-          width: '80%'
+          width: '80%',
+          border: 'black 1px dashed'
         }}>
-        <Grid container spacing={3}>
+        <Grid container spacing={3} sx={{ gap: '1rem' }}>
           {portfolios.map(portfolio => (
             <Grid
+              sx={{
+                backgroundColor: '#dbecf589',
+                borderRadius: '10%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
               item
               xs={4}
               key={portfolio.userId}
@@ -87,21 +96,46 @@ const GalleryPage = () => {
               onClick={() => {
                 navigateTo(`/galleryitem?person=${portfolio.username}`)
               }}>
-              <Item>
-                <Box sx={{ height: '20%' }}>
-                  <img src={portfolio.avatar} alt={portfolio.username} />
+              <Item
+                sx={{
+                  backgroundColor: 'transparent',
+                  boxShadow: 'none',
+                  borderRadius: '0'
+                }}>
+                <Box sx={{ height: '40px' }}>
+                  <img
+                    style={{ height: '100%' }}
+                    src={portfolio.avatar}
+                    alt={portfolio.username}
+                  />
                 </Box>
               </Item>
-              <Item>
-                <img src={portfolio.cover} alt={portfolio.name} />
+              <Item
+                sx={{
+                  backgroundColor: 'transparent',
+                  boxShadow: 'none',
+                  borderRadius: '0'
+                }}>
+                <img
+                  style={{ width: '100%' }}
+                  src={portfolio.cover}
+                  alt={portfolio.name}
+                />
               </Item>
-              <Item>{portfolio.username}</Item>
+              <Item
+                sx={{
+                  backgroundColor: 'transparent',
+                  boxShadow: 'none',
+                  borderRadius: '0'
+                }}>
+                {portfolio.username}
+              </Item>
             </Grid>
           ))}
         </Grid>
-      </Box>
+      </Box> */}
 
-      {/* <div className="GalleryContainer">
+      <div className="GalleryContainer">
         {portfolios.map(portfolio => (
           <div
             key={portfolio.userId}
@@ -119,7 +153,7 @@ const GalleryPage = () => {
             <span className="GalleryItemUser">{portfolio.username}</span>
           </div>
         ))}
-      </div> */}
+      </div>
     </>
   )
 }

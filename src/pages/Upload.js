@@ -8,7 +8,7 @@ import uploadicon from './image/upload.svg'
 import backarrow from './image/backarrow.svg'
 import UploadModal from './UploadModal'
 import { uploadProfileToBackend } from '../apis/api'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const UploadPage = () => {
   const [status, setStatus] = useState(0)
@@ -27,7 +27,7 @@ const UploadPage = () => {
     setModalVisible(true)
   }
 
-  const handleSave = async (e) => {
+  const handleSave = async e => {
     // 把這些內容都取出來
     e.preventDefault()
     const title = document.querySelector('#nfttitle').value
@@ -48,7 +48,7 @@ const UploadPage = () => {
       setError('no file')
       return
     }
-    
+
     const payload = {
       title,
       category,

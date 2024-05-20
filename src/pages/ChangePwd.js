@@ -39,17 +39,24 @@ const defaultTheme = createTheme()
 export default function SignIn() {
   const handleSubmit = async event => {
     event.preventDefault()
+    const username = document.querySelector('#username').value
     const oldpwd = document.querySelector('#oldpwd').value
     const newpwd = document.querySelector('#newpwd').value
     const checknewpwd = document.querySelector('#checknewpwd').value
 
+    if (!username) {
+      setError('Username is required')
+      return
+    }
+
     if (checknewpwd !== newpwd) {
-      setError('密碼不同QQ')
+      setError('Passwords do not match')
       return
     }
 
     const result = await signInContext.updatePassword({
-      username: signInContext.info.username,
+      //username: signInContext.info.username,
+      username: username,
       old_password: oldpwd,
       new_password: newpwd
     })
@@ -59,7 +66,7 @@ export default function SignIn() {
     if (result) {
       navigateTo('/')
     } else {
-      setError('舊密碼錯誤QQ')
+      setError('Wrong Password')
     }
     // const useremail = document.querySelector('#useremail').value
     // const userpassword = document.querySelector('#userpassword').value
@@ -100,13 +107,27 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Change Password
+            Enter Your Username
           </Typography>
           <Box
             component="form"
             onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              label="User Name"
+              name="username"
+              sx={{ marginBottom: 4 }}
+              //   autoComplete="oldpwd"
+              autoFocus
+            />
+            <Typography component="h1" variant="h5">
+              Change Password
+            </Typography>
             <TextField
               margin="normal"
               required

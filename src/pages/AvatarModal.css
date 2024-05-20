@@ -1,0 +1,109 @@
+
+.TwoButton1 {
+    display: flex;
+    justify-content: center;
+    align-items: end;  
+    /* border: 2px red solid; */
+    /* justify-content:space-evenly; */
+  }
+  
+  .SaveButton1 {
+      background-color: #000000;
+      color: white;
+      border-radius: 30px;
+      /* border: 2px red solid; */
+      width: 80px;
+      height: 30px;
+      font-family: 'Kanit', sans-serif;
+      display: flex;
+      justify-content: center; /* 水平居中 */
+      align-items: center;     /* 垂直居中 */
+      margin: 0 5% 0 0;
+    }
+  
+  
+    .Close1 {
+      display: flex;
+      /* justify-content: end; */
+      /* border: 2px red solid; */
+      align-self: flex-end;
+    }
+  
+  
+    .PlusImage1 {
+      border: 1px gray solid;
+      background-color: #ffffff;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center; /* 水平居中 */
+      align-items: center;     /* 垂直居中 */
+      width: 120px;
+      height: 120px;
+    }
+
+    .avatar-label1 {
+        display: flex;
+        justify-content: center; /* 水平居中 */
+        align-items: center;     /* 垂直居中 */
+        width: 100%;
+        height: 100%;
+
+    }
+
+    .Default {
+        width: 99%;
+        height: 99%;
+    }
+
+    .newAvatar {
+        width: 80%;
+        height: 80%;
+    }
+  
+    /* .Avatar {
+      width: 100%;
+    }
+   */
+    .AvatarPart {
+      /* border: 2px red solid; */
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* 水平居中 */
+      align-items: center;     /* 垂直居中 */
+      /* justify-content: space-between; */
+    }
+  
+  
+   
+
+
+    /* 下半部分: Description的<div>----------------- */
+    .DescPart1 {
+      width: 90%;
+      height: 30%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
+      align-items: center;
+      /* border: 2px rgb(0, 0, 0) solid; */
+    }
+  
+    .InputTitleUsername {
+      /* border: 2px rgb(235, 139, 28) solid; */
+      display: flex;
+      justify-content: center; 
+      text-align: center;
+      
+   }
+    .InputBoxUsername {
+      /* border: 2px rgb(255, 0, 0) solid; */
+      width: 60%;
+      height: 30%;
+      
+    }
+  
+    .InputBoxElementUsername {
+      height: 100%;
+      width: 100%;
+    }

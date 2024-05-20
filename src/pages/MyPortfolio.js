@@ -7,10 +7,13 @@ import SwipeableTextMobileStepper from './NftItemStepper'
 import Button from '@mui/material/Button'
 import { useState } from 'react'
 import FormDialog from './MoodDialog'
+import AvatarModal from './AvatarModal'
 
 const MyPortfolioPage = () => {
   const [moodText, setMoodText] = useState('Type anything...')
   const [editing, setEditing] = useState(false)
+  const [modalVisible, setModalVisible] = useState(false)
+  const [error, setError] = useState('')
 
   // const editMood = () => {
   //   const newMoodText = prompt('Enter your mood:')
@@ -26,9 +29,21 @@ const MyPortfolioPage = () => {
     navigateTo(-1) // 回到上一页
   }
 
+  const handleAvatarUpload = () => {
+    setModalVisible(true)
+  }
+
   return (
     <>
-      {/* <div>MyPortfolioTest</div> */}
+      <AvatarModal
+        modalVisible={modalVisible}
+        closeModal={() => {
+          setError('')
+          setModalVisible(false)
+        }}
+        // handleSave={handleSave}
+        error={error}
+      />
 
       <div className="BackContainer">
         <img src={backarrow} alt="back" onClick={goBack} />
@@ -36,7 +51,7 @@ const MyPortfolioPage = () => {
 
       <div className="MyUserPart">
         <span className="MyPhoto">
-          <img src={userphoto} alt="userphoto" />
+          <img src={userphoto} alt="userphoto" onClick={handleAvatarUpload} />
         </span>
         <span className="MyInfo">
           <span className="MyInfoName">Tinanana</span>
