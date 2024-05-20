@@ -1,18 +1,18 @@
 
 .UserPart {
-    /* border: rgb(0, 0, 0) 1px dashed; */
     font-family: 'Kanit', sans-serif;
     display: flex;
-    width: 60%;
+    width: 90%;
     height: 30%;
     align-items: center;
-    margin: 3% 30% 3% 5%;
+    margin: 1rem 0 1rem 0;
 }
 
 .Photo {
-    /* border: rgb(230, 67, 67) 1px dashed; */
     width: 30%;
-    height: 100%;
+    max-width: 180px;
+    aspect-ratio: 1;
+    /* border: 2px solid red; */
     display: flex;
     /* justify-content: center; */
     /* align-items: center; */
@@ -21,11 +21,9 @@
 
 .Photo img {
     height: 100%;
-    /* width: 100%; */
 }
 
 .Info {
-    /* border: rgb(230, 67, 67) 1px dashed; */
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -33,35 +31,39 @@
     text-align: left;
     margin-left: 3%;
     padding-left: 2%;
-    /* font-size: larger; */
+
+    justify-content: center;
+    /* border: 2px solid red; */
 }
 
 .InfoItem {
-    height: 33%;
+    /* border: 2px solid red; */
+    height: 11%;
+    width: 100%;
     display: flex;
     align-items: center;
-    /* border: rgb(230, 67, 67) 1px dashed; */
     font-size: xx-large;
     font-weight: bold;
+    margin: 0.5rem 0 0.5rem 0;
 }
 
 .InfoIcon {
     display: flex;
+    min-width: 30px;
+    max-width: 50px;
     width: 10%;
     height: 100%;
-    /* border: rgb(0, 0, 0) 1px dashed; */
     margin-right: 3%;
+    /* border: red 2px solid; */
 }
 
 .InfoIcon img {
-    /* height: 100%;  */
+    height: 100%; 
     width: 100%;
-    /* display: flex;
-    justify-content: center;
-    align-items: center;  */
 }
 
 .InfoNum {
+    flex-grow: 1;
     font-size: medium;
     font-weight: bold;
     color: #818181;
@@ -72,7 +74,6 @@
 }
 
 .Award {
-    /* border: rgb(0, 0, 0) 1px dashed; */
     display: flex;
     width: 90%;
     height: 45%;
@@ -80,6 +81,7 @@
 }
 
 .AwardElement {
+    width: 25%;
     background-color: #DBECF5;
     border-radius: 30px;
     display: flex;
@@ -87,6 +89,8 @@
     flex-grow: 1;
     align-items: center;
     margin: 0 1%;
+
+    /* border: 2px solid red; */
 }
 
 
@@ -102,15 +106,16 @@
     margin-top: 2%;
 }
 
-.TokenImg {
+.TokenImgContainer {
     height: 60%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.TokenImg img {
+.TokenImg {
     width: 60%;
+    height: 100%;
 }
 
 .TokenNum {
@@ -122,4 +127,23 @@
     font-size: x-large;
     font-weight: bold;
     color: #1B3973;
+}
+
+@media (max-width: 500px) {
+    .UserPart {
+        height: 15%;
+    }
+    .Photo {
+        width: 40%;
+    }
+    .InfoItem {
+        /* height: 20%; */
+    }
+    .Award {
+        flex-direction: column;
+    }
+    .AwardElement {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
 }

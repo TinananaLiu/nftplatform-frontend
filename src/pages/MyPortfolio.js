@@ -8,6 +8,7 @@ import Button from '@mui/material/Button'
 import { useState } from 'react'
 import FormDialog from './MoodDialog'
 import AvatarModal from './AvatarModal'
+import { useSignIn } from '../providers/SignIn'
 
 const MyPortfolioPage = () => {
   const [moodText, setMoodText] = useState('Type anything...')
@@ -22,6 +23,8 @@ const MyPortfolioPage = () => {
   //     setEditing(true)
   //   }
   // }
+
+  const { info: my_info } = useSignIn()
 
   const navigateTo = useNavigate()
 
@@ -51,10 +54,16 @@ const MyPortfolioPage = () => {
 
       <div className="MyUserPart">
         <span className="MyPhoto">
-          <img src={userphoto} alt="userphoto" onClick={handleAvatarUpload} />
+          <img
+            src={my_info.image ? my_info.image : userphoto}
+            alt="userphoto"
+            onClick={handleAvatarUpload}
+          />
         </span>
         <span className="MyInfo">
-          <span className="MyInfoName">Tinanana</span>
+          <span className="MyInfoName">
+            {my_info.username ? my_info.username : 'Tinanana'}
+          </span>
           <span className="MyInfoItem">
             <FormDialog />
             <span>

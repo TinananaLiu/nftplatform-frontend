@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState } from 'react'
 import { login as loginFunction } from '../apis/api'
 import { updatePassword as updatePasswordFunction } from '../apis/api'
+import { set_up_jwt } from '../apis/api'
 
 const SignInContext = createContext({
   loggedIn: false,
@@ -8,14 +9,16 @@ const SignInContext = createContext({
   logout: async () => {},
   updatePassword: async payload => {},
   info: {
-    username: 'admin'
+    username: null,
+    image: null
   }
 })
 
 const SignInProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false)
   const [info, setInfo] = useState({
-    username: ''
+    username: null,
+    image: null
   })
 
   const login = async payload => {
@@ -27,6 +30,12 @@ const SignInProvider = ({ children }) => {
         image: result.image,
         jwt: result.jwt
       })
+
+      localStorage.setItem('jwt', result.jwt)
+      localStorage.setItem('image', result.image)
+
+      set_up_jwt(result.jwt)
+
       if (!result.pwd_change) {
         return 1
       } else {
@@ -39,6 +48,7 @@ const SignInProvider = ({ children }) => {
   }
 
   const logout = () => {
+    localStorage.removeItem('jwt')
     setLoggedIn(false)
     setInfo({ username: '' })
   }

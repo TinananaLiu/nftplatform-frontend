@@ -56,7 +56,7 @@ export default function SignIn() {
       navigateTo('/')
     } else {
       //秀錯誤的畫面
-      setIsError(true)
+      setError("")
     }
   }
 
@@ -64,7 +64,7 @@ export default function SignIn() {
 
   const navigateTo = useNavigate()
 
-  const [isError, setIsError] = useState(false)
+  const [error, setError] = useState(false)
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -116,13 +116,13 @@ export default function SignIn() {
                 alignContent: 'center',
                 margin: '1rem 0 1rem 0'
               }}>
-              {isError ? (
+              {error !== "" ? (
                 <div
                   style={{
                     height: '1rem',
                     fontSize: '1rem'
                   }}>
-                  錯誤QQ
+                  {error}
                 </div>
               ) : (
                 <></>
