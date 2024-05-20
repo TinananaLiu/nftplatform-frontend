@@ -20,7 +20,8 @@ const getNFTItemByHash = async hash_id => {
     jwt(string): json web token;
     username(string);
     avatar(blob);
-*/
+
+    */
 const login = async payload => {
   const result = await api_endpoint.post('/user/login', payload)
   /*
