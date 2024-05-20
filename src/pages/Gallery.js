@@ -11,6 +11,7 @@ import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Grid from '@mui/material/Grid'
+import { Container } from '@mui/material'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -88,12 +89,10 @@ const GalleryPage = () => {
                 navigateTo(`/galleryitem?person=${portfolio.username}`)
               }}>
               <Item>
-                <Box sx={{ height: '20%' }}>
-                  <img src={portfolio.avatar} alt={portfolio.username} />
-                </Box>
+                  <img src={portfolio.avatar} alt={portfolio.username} width='20%' height='auto'/>
               </Item>
               <Item>
-                <img src={portfolio.cover} alt={portfolio.name} />
+                <img src={portfolio.cover} alt={portfolio.name} width='100%' height='auto'/>
               </Item>
               <Item>{portfolio.username}</Item>
             </Grid>
