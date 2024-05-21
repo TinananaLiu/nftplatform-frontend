@@ -6,8 +6,9 @@ const api_endpoint = axios.create({
   timeout: 3000
 })
 
-const set_up_jwt = jwt => {
-  axios.defaults.headers.common['Authorization'] = `Bearer ${jwt}`
+let jwt = localStorage.getItem('jwt')
+const set_up_jwt = JWT => {
+  jwt = JWT
 }
 
 const uploadProfileToBackend = async () => {
@@ -19,6 +20,11 @@ const getNFTItemByHash = async hash_id => {
 }
 
 //<<User API>>-------------------------------------------------------
+const getAllNfts = async userId => {
+  const result = await api_endpoint.put('/user/allnfts', { userId })
+  return result.data
+}
+
 //Signin 功能
 /*
   expect回傳的東西:
@@ -31,12 +37,19 @@ const login = async payload => {
   /*
     return {username, avatar, jwt}
   */
-  return {
-    jwt: 'abc',
-    username: 'yugo',
-    image: Avatar,
-    pwd_change: true
+  try {
+    const result = await api_endpoint.post('/user/login', payload)
+
+    return result.data
+  } catch (e) {
+    return null
   }
+  // return {
+  //   jwt: 'abc',
+  //   username: 'yugo',
+  //   image: Avatar,
+  //   pwd_change: true
+  // }
 }
 
 //Logout 功能 (後端忘記寫logout的api)
@@ -46,7 +59,7 @@ const logout = async ({ user }) => {
 
 //getUserInfo 功能
 const getUserInfo = async ({ userId }) => {
-  const result = await api_endpoint.put('/user/:userId', { userId })
+  const result = await api_endpoint.get('/user/:userId', { userId })
   return result.data
 }
 //updatePassword 功能
@@ -56,19 +69,48 @@ const updatePasswordAndUsername = async ({
   newPassword,
   userName
 }) => {
-  const result = await api_endpoint.put('/user/info', {
-    userId,
-    oldPassword,
-    newPassword,
-    userName
-  })
+  const result = await api_endpoint.put(
+    '/user/info',
+    {
+      userId,
+      oldPassword,
+      newPassword,
+      userName
+    },
+    {
+      headers: {
+        Authorization: jwt ? `Bearer ${jwt}` : null
+      }
+    }
+  )
   //return {username, avatar, jwt}
+
   return result.data
 }
 
 //updateBio 功能
-const updateBio = async ({ userId, userBio }) => {
-  const result = await api_endpoint.put('/user/bio', { userId, userBio })
+
+const getUserBio = async () => {
+  console.log(jwt)
+  const result = await api_endpoint.get('/user/bio', {
+    headers: {
+      Authorization: `bearer ${jwt}`
+    }
+  })
+
+  return result.data.bio
+}
+
+const updateUserBio = async ({ userBio }) => {
+  const result = await api_endpoint.put(
+    '/user/bio',
+    { userBio },
+    {
+      headers: {
+        Authorization: `bearer ${jwt}`
+      }
+    }
+  )
   //return {userBio}嗎?
   return result.data
 }
@@ -87,7 +129,18 @@ const getNftInfo = async ({ nftId }) => {
   return result.data
 }
 //uploadNft 功能
-const uploadNft = async ({}) => {
+const uploadNft = async ({
+  userId,
+  title,
+  category,
+  institution,
+  tag1,
+  tag2,
+  description,
+  verification,
+  image,
+  file
+}) => {
   const result = await api_endpoint.post('/nft/', {
     userId,
     title,
@@ -118,6 +171,15 @@ const updateNftLikes = async ({ nftId, likes_num }) => {
   return result.data
 }
 
+const autoLogin = async jwt => {
+  const result = await api_endpoint.get('/user/autologin', {
+    headers: {
+      Authorization: `bearer ${jwt}`
+    }
+  })
+  return result.data
+}
+
 // const getPersonProfile = async person => {
 //   // const profile = MockProfileItems[person]
 //   // return profile
@@ -129,13 +191,16 @@ export {
   getNFTItemByHash,
   login,
   logout,
+  getAllNfts,
   getUserInfo,
   updatePasswordAndUsername,
-  updateBio,
+  updateUserBio,
   getTotalLikes,
   getNftInfo,
   updateNftLikes,
   uploadNft,
-  hiddenNft
+  hiddenNft,
+  autoLogin,
+  getUserBio
   // getPersonProfile
 }

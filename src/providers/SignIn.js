@@ -1,7 +1,6 @@
-import React, { createContext, useContext, useState } from 'react'
-import { login as loginFunction } from '../apis/api'
-import { updatePassword as updatePasswordFunction } from '../apis/api'
-import { set_up_jwt } from '../apis/api'
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import { autoLogin, login as loginFunction, set_up_jwt } from '../apis/api'
+import { updatePasswordAndUsername } from '../apis/api'
 
 const SignInContext = createContext({
   loggedIn: false,
@@ -9,7 +8,7 @@ const SignInContext = createContext({
   logout: async () => {},
   updatePassword: async payload => {},
   info: {
-    username: null,
+    user_name: null,
     image: null
   }
 })
@@ -17,23 +16,23 @@ const SignInContext = createContext({
 const SignInProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false)
   const [info, setInfo] = useState({
-    username: null,
+    user_name: null,
     image: null
   })
+  const [jwt, setJwt] = useState(null)
 
   const login = async payload => {
     const result = await loginFunction(payload)
     if (result) {
       setLoggedIn(true)
       setInfo({
-        username: result.username,
-        image: result.image,
-        jwt: result.jwt
+        user_name: result.user_name,
+        image: result.image
       })
+      setJwt(result.jwt)
 
       localStorage.setItem('jwt', result.jwt)
-      localStorage.setItem('image', result.image)
-
+      // localStorage.setItem('image')
       set_up_jwt(result.jwt)
 
       if (!result.pwd_change) {
@@ -42,21 +41,44 @@ const SignInProvider = ({ children }) => {
         return 2
       }
     } else {
-      // ...
       return 0
     }
   }
 
   const logout = () => {
-    localStorage.removeItem('jwt')
     setLoggedIn(false)
-    setInfo({ username: '' })
+    setInfo({ user_name: '' })
+    localStorage.removeItem('jwt')
   }
 
   const updatePassword = async payload => {
-    const result = await updatePasswordFunction(payload)
-    return result
+    try {
+      const result = await updatePasswordAndUsername(payload)
+      setInfo({
+        user_name: result.user_name,
+        image: result.image
+      })
+      return result
+    } catch (e) {
+      return null
+    }
   }
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt')
+    setJwt(jwt)
+  }, [])
+
+  useEffect(() => {
+    if (!jwt) return
+    autoLogin(jwt).then(result => {
+      setLoggedIn(true)
+      setInfo({
+        user_name: result.user_name,
+        image: result.image
+      })
+    })
+  }, [jwt])
 
   return (
     <SignInContext.Provider

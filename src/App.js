@@ -33,8 +33,6 @@ function App() {
 
   const { info: my_info } = useSignIn()
 
-  console.log(my_info)
-
   const signInContext = useSignIn()
 
   return (

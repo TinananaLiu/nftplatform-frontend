@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './MyPortfolio.css'
 import userphoto from './image/userphoto.svg'
 import backarrow from './image/backarrow.svg'
@@ -9,12 +9,15 @@ import { useState } from 'react'
 import FormDialog from './MoodDialog'
 import AvatarModal from './AvatarModal'
 import { useSignIn } from '../providers/SignIn'
+import { getUserBio, getUserInfo } from '../apis/api'
 
 const MyPortfolioPage = () => {
   const [moodText, setMoodText] = useState('Type anything...')
   const [editing, setEditing] = useState(false)
   const [modalVisible, setModalVisible] = useState(false)
   const [error, setError] = useState('')
+
+  const [userBio, setUserBio] = useState('')
 
   // const editMood = () => {
   //   const newMoodText = prompt('Enter your mood:')
@@ -23,6 +26,12 @@ const MyPortfolioPage = () => {
   //     setEditing(true)
   //   }
   // }
+
+  useEffect(() => {
+    getUserBio().then(bio => {
+      setUserBio(bio)
+    })
+  }, [])
 
   const { info: my_info } = useSignIn()
 
@@ -62,13 +71,11 @@ const MyPortfolioPage = () => {
         </span>
         <span className="MyInfo">
           <span className="MyInfoName">
-            {my_info.username ? my_info.username : 'Tinanana'}
+            {my_info.user_name ? my_info.user_name : 'Tinanana'}
           </span>
           <span className="MyInfoItem">
-            <FormDialog />
-            <span>
-              test ...........test test hihi libuv libuvuvuvuvuvuv heapq
-            </span>
+            <FormDialog setUserBio={setUserBio} />
+            <span>{userBio}</span>
             {/* <span
               id="mood-text"
               className={moodText === 'Type anything...' ? 'default-text' : ''}

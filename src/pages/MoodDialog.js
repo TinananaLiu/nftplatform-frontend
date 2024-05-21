@@ -8,8 +8,9 @@ import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 import IconButton from '@mui/material/IconButton'
 import EditIcon from '@mui/icons-material/Edit'
+import { updateUserBio } from '../apis/api'
 
-export default function FormDialog() {
+export default function FormDialog({ setUserBio }) {
   const [open, setOpen] = React.useState(false)
 
   const handleClickOpen = () => {
@@ -51,7 +52,7 @@ export default function FormDialog() {
             autoFocus
             required
             margin="dense"
-            id="name"
+            id="new_custom_bio"
             name="mood"
             label="Type anything"
             type="text"
@@ -61,7 +62,15 @@ export default function FormDialog() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button type="submit">Done</Button>
+          <Button
+            type="submit"
+            onClick={event => {
+              const value = document.getElementById('new_custom_bio').value
+              updateUserBio({ userBio: value })
+              setUserBio(value)
+            }}>
+            Done
+          </Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

@@ -4,7 +4,7 @@ import './GalleryItem.css'
 // import userphoto from './image/userphoto.svg'
 import backarrow from './image/backarrow.svg'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { getPersonProfile } from '../apis/api'
+import { getAllNfts } from '../apis/api'
 
 const GalleryItemPage = () => {
   const location = useLocation()
@@ -26,7 +26,7 @@ const GalleryItemPage = () => {
       return
     }
     setPerson(person)
-    getPersonProfile(person).then(profile => {
+    getAllNfts(person).then(profile => {
       if (profile) {
         setProfile(profile)
       }

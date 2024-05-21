@@ -37,6 +37,8 @@ function Copyright(props) {
 const defaultTheme = createTheme()
 
 export default function SignIn() {
+  const { updatePassword } = useSignIn()
+
   const handleSubmit = async event => {
     event.preventDefault()
 
@@ -48,15 +50,13 @@ export default function SignIn() {
       password: userpassword
     })
 
-    console.log(result)
-
     if (result === 1) {
       navigateTo('/changepassword')
     } else if (result === 2) {
       navigateTo('/')
     } else {
       //秀錯誤的畫面
-      setError("")
+      setError('Wrong email or password')
     }
   }
 
@@ -64,7 +64,7 @@ export default function SignIn() {
 
   const navigateTo = useNavigate()
 
-  const [error, setError] = useState(false)
+  const [error, setError] = useState('')
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -116,7 +116,7 @@ export default function SignIn() {
                 alignContent: 'center',
                 margin: '1rem 0 1rem 0'
               }}>
-              {error !== "" ? (
+              {error !== '' ? (
                 <div
                   style={{
                     height: '1rem',

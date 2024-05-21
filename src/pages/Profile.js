@@ -52,7 +52,7 @@ const ProfilePage = () => {
         </span>
         <span className="Info">
           <span className="InfoItem">
-            {my_info.username ? my_info.username : 'Tinanana'}
+            {my_info.user_name ? my_info.user_name : 'Tinanana'}
           </span>
           <span className="InfoItem">
             <span className="InfoIcon">

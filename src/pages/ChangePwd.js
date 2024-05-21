@@ -56,9 +56,9 @@ export default function SignIn() {
 
     const result = await signInContext.updatePassword({
       //username: signInContext.info.username,
-      username: username,
-      old_password: oldpwd,
-      new_password: newpwd
+      userName: username,
+      oldPassword: oldpwd,
+      newPassword: newpwd
     })
 
     console.log(result)
