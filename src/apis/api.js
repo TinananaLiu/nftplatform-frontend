@@ -169,6 +169,16 @@ const getTotalLikes = async () => {
   return result.data
 }
 
+const getRank = async () => {
+  const result = await api_endpoint.get('/user/rank', {
+    headers: {
+      Authorization: `bearer ${jwt}`
+    }
+  })
+  //return {total likes}
+  return result.data
+}
+
 //<<NFT API>>-------------------------------------------------------
 //getNftInfo 功能
 const getNftInfo = async nftId => {
@@ -306,6 +316,7 @@ export {
   updateUserBio,
   updateImgAndName,
   getTotalLikes,
+  getRank,
   getNftInfo,
   getAllNftsByUser,
   updateNftLikes,

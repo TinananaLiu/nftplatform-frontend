@@ -11,7 +11,7 @@ import likeicon from './image/likes.svg'
 import rankicon from './image/crown.svg'
 import { useNavigate } from 'react-router-dom'
 import { useSignIn } from '../providers/SignIn'
-import { getTotalLikes, getUserInfo } from '../apis/api'
+import { getRank, getTotalLikes, getUserInfo } from '../apis/api'
 
 // const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 //   height: 20,
@@ -33,6 +33,7 @@ const ProfilePage = () => {
   const [tokenCre, setTokenCre] = useState(0)
   const [tokenPro, setTokenPro] = useState(0)
   const [totalLike, setTotalLike] = useState(0)
+  const [rank, setRank] = useState(0)
   const navigateTo = useNavigate()
   const { info: my_info } = useSignIn()
   const signInContext = useSignIn()
@@ -62,6 +63,13 @@ const ProfilePage = () => {
         if (res[0]) {
           const { total_likes } = res[0]
           setTotalLike(total_likes)
+        }
+      })
+      getRank().then(res => {
+        console.log(res)
+        if (res) {
+          const { rank } = res
+          setRank(rank)
         }
       })
     }
@@ -103,7 +111,7 @@ const ProfilePage = () => {
             <span className="InfoIcon">
               <img src={rankicon} alt="ranking" />
             </span>
-            <span className="InfoNum">ranking</span>
+            <span className="InfoNum">ranking {rank}</span>
             {/* <Box sx={{ width: '100%' }}>
               <BorderLinearProgress variant="determinate" value={progress} />
             </Box> */}

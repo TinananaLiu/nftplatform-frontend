@@ -80,16 +80,6 @@ const MyPortfolioPage = () => {
 
   return (
     <>
-      {/* <AvatarModal
-        modalVisible={modalVisible}
-        closeModal={() => {
-          setError('')
-          setModalVisible(false)
-        }}
-        // handleSave={handleSave}
-        error={error}
-      /> */}
-
       <div className="BackContainer">
         <img src={backarrow} alt="back" onClick={goBack} />
       </div>
@@ -104,32 +94,12 @@ const MyPortfolioPage = () => {
           />
         </span>
         <span className="MyInfo">
-          <span className="MyInfoName">
-            {userName && userName}
-            {/* {my_info.user_name ? my_info.user_name : 'Tinanana'} */}
-          </span>
+          <span className="MyInfoName">{userName && userName}</span>
           <span className="MyInfoItem">
             <FormDialog setUserBio={setUserBio} />
             <span>{userBio}</span>
-            {/* <span
-              id="mood-text"
-              className={moodText === 'Type anything...' ? 'default-text' : ''}
-              style={{ width: '50%' }}>
-              {moodText}
-              {/* 這邊到時候要從後端撈資料填入 
-            </span> */}
-
-            {/* <span className=''>..............</span>
-            <IconButton aria-label="edit">
-              <EditIcon />
-            </IconButton> */}
           </span>
-          {/* <span className="MyInfoItem">...</span>
-          <span className="MyInfoItem">
-            <Box sx={{ width: '100%' }}>
-              <BorderLinearProgress variant="determinate" value={progress} />
-            </Box>
-          </span> */}
+
           <span className="MyInfoItem">
             <AvatarDialog
               avatar={avatar}
