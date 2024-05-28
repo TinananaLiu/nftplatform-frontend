@@ -7,7 +7,7 @@ import cover2 from './image/cover2.svg'
 import backarrow from './image/backarrow.svg'
 import createGallery from './image/Create-amico.svg'
 import { useNavigate } from 'react-router-dom'
-
+import defaultavatar from './image/defaultavatar.svg'
 import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
@@ -22,199 +22,6 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary
 }))
-
-// const portfolios = [
-//   {
-//     userId: 1,
-//     username: 'Tina',
-//     avatar: avatar1,
-//     cover: cover1
-//     // name: 'Tina'
-//   },
-//   {
-//     userId: 2,
-//     username: 'John',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Cat Lover'
-//   },
-//   // 其他作品集数据...
-//   {
-//     userId: 3,
-//     username: 'Amy',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 4,
-//     username: 'Brian GT Wu',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   },
-//   {
-//     userId: 5,
-//     username: 'Billy Goat',
-//     avatar: avatar2,
-//     cover: cover2
-//     // name: 'Hiiiiii'
-//   }
-// ]
 
 const GalleryPage = () => {
   const navigateTo = useNavigate()
@@ -250,7 +57,10 @@ const GalleryPage = () => {
               <span className="GalleryItemAvatar">
                 <img
                   src={
-                    process.env.REACT_APP_GOOGLE_STORAGE_USER + portfolio.image
+                    portfolio.image
+                      ? process.env.REACT_APP_GOOGLE_STORAGE_USER +
+                        portfolio.image
+                      : defaultavatar
                   }
                   alt={portfolio.user_name + '大頭'}
                 />

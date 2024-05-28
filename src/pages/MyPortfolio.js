@@ -44,7 +44,8 @@ const MyPortfolioPage = () => {
         console.log(res[0].bio)
         setUserBio(res[0].bio)
         setUserName(res[0].user_name)
-        setAvatar(process.env.REACT_APP_GOOGLE_STORAGE_USER + res[0].image)
+        res[0].image &&
+          setAvatar(process.env.REACT_APP_GOOGLE_STORAGE_USER + res[0].image)
       })
 
       getAllMyNfts().then(res => {

@@ -166,7 +166,7 @@ function App() {
                             ? process.env.REACT_APP_GOOGLE_STORAGE_USER +
                               my_info.image
                             : defaultavatar
-                        } //https://storage.cloud.google.com/personachain-user-image/
+                        }
                         alt="defaultavatar"
                         onClick={() => {
                           navigateTo('/profile')
