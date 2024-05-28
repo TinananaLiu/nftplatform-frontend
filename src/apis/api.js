@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Avatar from '../pages/image/token.svg'
-const baseURL = process.env.BASE_URL
+const baseURL = process.env.REACT_APP_BASE_URL
 const api_endpoint = axios.create({
   baseURL: baseURL,
   timeout: 3000
