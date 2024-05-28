@@ -14,7 +14,8 @@ import ChangePwdPage from './pages/ChangePwd'
 
 import { Route, Routes } from 'react-router-dom'
 import logo from './pages/image/logo.svg'
-import userphoto from './pages/image/userphoto.svg'
+// import userphoto from './pages/image/userphoto.svg'
+import defaultavatar from './pages/image/defaultavatar.svg'
 import homeicon from './pages/image/homeicon.svg'
 import portfolioicon from './pages/image/portfolioicon.svg'
 import galleryicon from './pages/image/galleryicon.svg'
@@ -65,20 +66,24 @@ function App() {
                 </span>
                 <span className="FunctionTitle">Home</span>
               </span>
-              <span
-                className="FunctionElement"
-                style={{
-                  backgroundColor:
-                    location === '/myportfolio' ? hoverColor : null
-                }}
-                onClick={() => {
-                  navigateTo('/myportfolio')
-                }}>
-                <span className="FunctionImg">
-                  <img src={portfolioicon} alt="portfolio" />
+              {localStorage.getItem('jwt') ? (
+                <span
+                  className="FunctionElement"
+                  style={{
+                    backgroundColor:
+                      location === '/myportfolio' ? hoverColor : null
+                  }}
+                  onClick={() => {
+                    navigateTo('/myportfolio')
+                  }}>
+                  <span className="FunctionImg">
+                    <img src={portfolioicon} alt="portfolio" />
+                  </span>
+                  <span className="FunctionTitle">My Portfolio</span>
                 </span>
-                <span className="FunctionTitle">My Portfolio</span>
-              </span>
+              ) : (
+                ''
+              )}
               <span
                 className="FunctionElement"
                 style={{
@@ -92,19 +97,23 @@ function App() {
                 </span>
                 <span className="FunctionTitle">Gallery</span>
               </span>
-              <span
-                className="FunctionElement"
-                style={{
-                  backgroundColor: location === '/upload' ? hoverColor : null
-                }}
-                onClick={() => {
-                  navigateTo('/upload')
-                }}>
-                <span className="FunctionImg">
-                  <img src={uploadicon} alt="upload" />
+              {localStorage.getItem('jwt') ? (
+                <span
+                  className="FunctionElement"
+                  style={{
+                    backgroundColor: location === '/upload' ? hoverColor : null
+                  }}
+                  onClick={() => {
+                    navigateTo('/upload')
+                  }}>
+                  <span className="FunctionImg">
+                    <img src={uploadicon} alt="upload" />
+                  </span>
+                  <span className="FunctionTitle">Upload</span>
                 </span>
-                <span className="FunctionTitle">Upload</span>
-              </span>
+              ) : (
+                ''
+              )}
             </span>
           </div>
         )}
@@ -115,7 +124,7 @@ function App() {
           location !== '/changepassword' && (
             <div id="userbar" className="UserBar">
               <span className="UserBarElement">
-                {signInContext.loggedIn ? (
+                {localStorage.getItem('jwt') ? (
                   <>
                     <Button
                       // type="submit"
@@ -142,14 +151,23 @@ function App() {
                     <div
                       style={{
                         height: '50px',
+                        width: '50px',
                         paddingTop: '8px'
                       }}>
                       <img
                         style={{
-                          height: '100%'
+                          height: '100%',
+                          width: '100%',
+                          borderRadius: '100%',
+                          objectFit: 'cover'
                         }}
-                        src={my_info.image ? my_info.image : userphoto}
-                        alt="userphoto"
+                        src={
+                          my_info.image
+                            ? process.env.REACT_APP_GOOGLE_STORAGE_USER +
+                              my_info.image
+                            : defaultavatar
+                        } //https://storage.cloud.google.com/personachain-user-image/
+                        alt="defaultavatar"
                         onClick={() => {
                           navigateTo('/profile')
                         }}

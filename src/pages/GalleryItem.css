@@ -1,20 +1,46 @@
 
-.GalleryItemContainer {
-    background-color: #DBECF5;
-    /* display: flex; */
-    /* width: 60%; */
+.NftList {
+    /* background-color: #DBECF5;
+    width: 60%;
     height: 50%;
     border: rgb(86, 137, 184) 5px dashed;
     border-radius: 15px;
     margin-right: 10%;
-    margin-top: 2%;
+    margin-top: 2%; */
+    background-color: #dbecf589;
+    border-radius: 30px;
+    font-family: 'Kanit', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.ProfileGrid {
+.NftListImg{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    height: 150px;
+    width: 150px;
+}
+
+.NftListImg img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.NftListTitle{
+    margin-bottom: 5%;
+}
+
+.GalleryItemContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+    margin-top: 2rem;
 }
+
+
 
 @media (max-width: 1500px) {
     .ProfileGrid {

@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Gallery.css'
 import avatar1 from './image/userphoto.svg'
 import avatar2 from './image/user2.svg'
 import cover1 from './image/cover1.svg'
 import cover2 from './image/cover2.svg'
 import backarrow from './image/backarrow.svg'
+import createGallery from './image/Create-amico.svg'
 import { useNavigate } from 'react-router-dom'
 
 import { styled } from '@mui/material/styles'
@@ -12,6 +13,7 @@ import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Grid from '@mui/material/Grid'
 import { Container } from '@mui/material'
+import { getALLUserWithNFT } from '../apis/api'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -21,190 +23,211 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary
 }))
 
-const portfolios = [
-  {
-    userId: 1,
-    username: 'tina',
-    avatar: avatar1,
-    cover: cover1
-    // name: 'Tina'
-  },
-  {
-    userId: 2,
-    username: 'John',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Cat Lover'
-  },
-  // 其他作品集数据...
-  {
-    userId: 3,
-    username: 'Amy',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },
-  {
-    userId: 4,
-    username: 'Brian GT Wu',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },
-  {
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },
-  {
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },
-  {
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },
-  {
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },
-  {
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },
-  {
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },
-  {
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },
-  {
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },{
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },{
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },{
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },{
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },{
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },{
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },{
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },{
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },{
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },{
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },{
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },{
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },{
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },{
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  },{
-    userId: 5,
-    username: 'Billy Goat',
-    avatar: avatar2,
-    cover: cover2
-    // name: 'Hiiiiii'
-  }
-]
+// const portfolios = [
+//   {
+//     userId: 1,
+//     username: 'Tina',
+//     avatar: avatar1,
+//     cover: cover1
+//     // name: 'Tina'
+//   },
+//   {
+//     userId: 2,
+//     username: 'John',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Cat Lover'
+//   },
+//   // 其他作品集数据...
+//   {
+//     userId: 3,
+//     username: 'Amy',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 4,
+//     username: 'Brian GT Wu',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   },
+//   {
+//     userId: 5,
+//     username: 'Billy Goat',
+//     avatar: avatar2,
+//     cover: cover2
+//     // name: 'Hiiiiii'
+//   }
+// ]
 
 const GalleryPage = () => {
   const navigateTo = useNavigate()
-
+  const [portfolios, setPortfolios] = useState([])
   const goBack = () => {
     navigateTo(-1) // 回到上一页
   }
+  useEffect(() => {
+    getALLUserWithNFT().then(portfolios => {
+      console.log(portfolios)
+      setPortfolios(portfolios)
+    })
+  }, [])
 
   return (
     <>
@@ -212,88 +235,75 @@ const GalleryPage = () => {
         <img src={backarrow} alt="back" onClick={goBack} />
       </div>
 
-      {/* <Box
-        sx={{
-          flexGrow: 1,
-          width: '80%',
-          border: 'black 1px dashed'
-        }}>
-        <Grid container spacing={3} sx={{ gap: '1rem' }}>
+      {portfolios.length !== 0 ? (
+        <div className="GalleryContainer">
           {portfolios.map(portfolio => (
-            <Grid
-              sx={{
-                backgroundColor: '#dbecf589',
-                borderRadius: '10%',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}
-              item
-              xs={4}
-              key={portfolio.userId}
-              //這邊要改成按了之後導到不同Item
+            <div
+              key={portfolio.user_id}
+              className="GalleryItem"
+              //這邊要改成按了之後導到不同GalleryItem(不同人)
               onClick={() => {
-                navigateTo(`/galleryitem?person=${portfolio.username}`)
+                navigateTo(
+                  `/galleryitem?person=${portfolio.user_name}&personId=${portfolio.user_id}`
+                )
               }}>
-              <Item
-                sx={{
-                  backgroundColor: 'transparent',
-                  boxShadow: 'none',
-                  borderRadius: '0'
-                }}>
-                <Box sx={{ height: '40px' }}>
-                  <img
-                    style={{ height: '100%' }}
-                    src={portfolio.avatar}
-                    alt={portfolio.username}
-                  />
-                </Box>
-              </Item>
-              <Item
-                sx={{
-                  backgroundColor: 'transparent',
-                  boxShadow: 'none',
-                  borderRadius: '0'
-                }}>
+              <span className="GalleryItemAvatar">
                 <img
-                  style={{ width: '100%' }}
-                  src={portfolio.cover}
-                  alt={portfolio.name}
+                  src={
+                    process.env.REACT_APP_GOOGLE_STORAGE_USER + portfolio.image
+                  }
+                  alt={portfolio.user_name + '大頭'}
                 />
-              </Item>
-              <Item
-                sx={{
-                  backgroundColor: 'transparent',
-                  boxShadow: 'none',
-                  borderRadius: '0'
-                }}>
-                {portfolio.username}
-              </Item>
-            </Grid>
+              </span>
+              <span className="GalleryItemCover">
+                <img
+                  src={
+                    process.env.REACT_APP_GOOGLE_STORAGE_NFT + portfolio.cover
+                  } //這邊抓user其中一個NFT的image顯示
+                  alt={portfolio.user_name + '的NFT圖片'}
+                />
+              </span>
+              <span className="GalleryItemUser">{portfolio.user_name}</span>
+            </div>
           ))}
-        </Grid>
-        </Box> */}
-
-      <div className="GalleryContainer">
-        {portfolios.map(portfolio => (
-          <div
-            key={portfolio.userId}
-            className="GalleryItem"
-            //這邊要改成按了之後導到不同Item
-            onClick={() => {
-              navigateTo(`/galleryitem?person=${portfolio.username}`)
+        </div>
+      ) : (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            marginTop: '2rem',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
+          <span
+            style={{
+              fontFamily: 'Kanit',
+              fontWeight: '400',
+              fontSize: '40px',
+              lineHeight: '70px',
+              textAlign: 'center'
+              // marginTop: '2rem'
             }}>
-            <span className="GalleryItemAvatar">
-              <img src={portfolio.avatar} alt={portfolio.username} />
-            </span>
-            <span className="GalleryItemCover">
-              <img src={portfolio.cover} alt={portfolio.name} />
-            </span>
-            <span className="GalleryItemUser">{portfolio.username}</span>
-          </div>
-        ))}
-      </div>
+            No Profiles Yet.
+          </span>
+          <span
+            style={{
+              fontFamily: 'Kanit',
+              fontWeight: '400',
+              fontSize: '40px',
+              lineHeight: '70px',
+              textAlign: 'center'
+              // marginTop: '2rem',
+              // width: '60%'
+            }}>
+            Be the First to Showcase Your Work!
+          </span>
+          <span style={{ width: '70%' }}>
+            <img src={createGallery} alt="defaultCreateGallery" />
+          </span>
+        </div>
+      )}
     </>
   )
 }

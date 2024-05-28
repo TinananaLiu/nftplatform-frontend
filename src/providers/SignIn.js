@@ -9,6 +9,7 @@ const SignInContext = createContext({
   updatePassword: async payload => {},
   info: {
     user_name: null,
+    user_id: null,
     image: null
   }
 })
@@ -17,6 +18,7 @@ const SignInProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false)
   const [info, setInfo] = useState({
     user_name: null,
+    user_id: null,
     image: null
   })
   const [jwt, setJwt] = useState(null)
@@ -27,6 +29,7 @@ const SignInProvider = ({ children }) => {
       setLoggedIn(true)
       setInfo({
         user_name: result.user_name,
+        user_id: result.user_id,
         image: result.image
       })
       setJwt(result.jwt)
@@ -56,6 +59,7 @@ const SignInProvider = ({ children }) => {
       const result = await updatePasswordAndUsername(payload)
       setInfo({
         user_name: result.user_name,
+        user_id: result.user_id,
         image: result.image
       })
       return result
@@ -75,6 +79,7 @@ const SignInProvider = ({ children }) => {
       setLoggedIn(true)
       setInfo({
         user_name: result.user_name,
+        user_id: result.user_id,
         image: result.image
       })
     })

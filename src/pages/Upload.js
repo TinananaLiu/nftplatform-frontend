@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import uploadfile from './image/uploadfile.svg'
 import transferfile from './image/transferfile.svg'
 import finishtransfer from './image/finishtransfer.svg'
@@ -7,17 +7,20 @@ import plus from './image/plus.svg'
 import uploadicon from './image/upload.svg'
 import backarrow from './image/backarrow.svg'
 import UploadModal from './UploadModal'
-import { uploadProfileToBackend } from '../apis/api'
+import { uploadNft, uploadProfileToBackend } from '../apis/api'
 import { useNavigate } from 'react-router-dom'
+import { useSignIn } from '../providers/SignIn'
 
 const UploadPage = () => {
   const [status, setStatus] = useState(0)
   const [modalVisible, setModalVisible] = useState(false)
   const [hashId, setHashId] = useState(null)
-  const [file, setFile] = useState(null)
-  const [error, setError] = useState('')
+  const [fileURL, setFileURL] = useState(null)
+  const [fileName, setFilename] = useState(null)
+  const [isUpload, setIsUpload] = useState(false)
 
   const navigateTo = useNavigate()
+  const signInContext = useSignIn()
 
   const goBack = () => {
     navigateTo(-1) // 回到上一页
@@ -26,74 +29,38 @@ const UploadPage = () => {
   const handleUpload = () => {
     setModalVisible(true)
   }
-
-  const handleSave = async e => {
-    // 把這些內容都取出來
-    e.preventDefault()
-    const title = document.querySelector('#nfttitle').value
-    // const date = document.querySelector('#nftdate').value
-    const category = document.querySelector('#nftcategory').value
-    const institution = document.querySelector('#nftinstitution').value
-    const tag1 = document.querySelector('#nfttag1').value
-    const tag2 = document.querySelector('#nfttag2').value
-    const description = document.querySelector('#nftdescription').value
-    const verification = document.querySelector('#nftverify').value
-    const image = document.querySelector('#nftimage')
-    console.log(image)
-    if (!image) {
-      setError('no image')
-      return
+  useEffect(() => {
+    if (!localStorage.getItem('jwt')) {
+      window.location.href = '/'
     }
-    if (!file) {
-      setError('no file')
-      return
-    }
-
-    const payload = {
-      title,
-      category,
-      institution,
-      tags: [tag1, tag2],
-      description,
-      verification,
-      image: image.src,
-      file: file
-    }
-    console.log('上傳:', payload)
-    // 把 modal 關了
-    setModalVisible(false)
-    // 切到下一頁
-    setStatus(1)
-    // 把資料傳給後端處理
-    const result = await uploadProfileToBackend(payload)
-    // 等到後端回傳回來, 就再下一頁, 把重要資訊記起來. 提供後續 render
-    // ...
-    console.log('回傳:', result)
-    setStatus(2)
-    setHashId(result)
-  }
+  }, [])
 
   const RenderComponent = () => {
     if (status === 0) {
       return (
         <>
-          <img src={uploadfile} className="UploadPic" alt="uploadfile" />
+          {!isUpload ? (
+            <img src={uploadfile} className="UploadPic" alt="uploadfile" />
+          ) : (
+            <div>{fileName}</div>
+          )}
           <div>
             <input
               type="file"
               id="file"
               name="file"
-              //   accept="image/png, image/jpeg"
               style={{ display: 'none' }}
               onChange={event => {
                 const file = event.target.files[0]
                 if (file) {
                   const reader = new FileReader()
                   reader.onload = e => {
-                    setFile(e.target.result)
+                    setFileURL(e.target.result)
                   }
                   reader.readAsDataURL(file)
                 }
+                setFilename(file.name)
+                setIsUpload(true)
               }}
             />
             <img
@@ -105,10 +72,8 @@ const UploadPage = () => {
                 document.getElementById('file').click()
               }}
             />
-
-            {/* <img src={plus} className="Plus" alt="plus" /> */}
           </div>
-          <div className="UploadWord">or Drop files here.</div>
+          {/* <div className="UploadWord">or Drop files here.</div> */}
           <div className="ClickButton" onClick={handleUpload}>
             <div>Upload</div>
             <div>
@@ -148,12 +113,11 @@ const UploadPage = () => {
     <>
       <UploadModal
         modalVisible={modalVisible}
-        closeModal={() => {
-          setError('')
-          setModalVisible(false)
-        }}
-        handleSave={handleSave}
-        error={error}
+        setModalVisible={setModalVisible}
+        fileURL={fileURL}
+        fileName={fileName}
+        setHashId={setHashId}
+        setStatus={setStatus}
       />
       <div className="BackContainer">
         <img src={backarrow} alt="back" onClick={goBack} />

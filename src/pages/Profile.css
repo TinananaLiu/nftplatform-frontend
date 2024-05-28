@@ -21,6 +21,9 @@
 
 .Photo img {
     height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    object-fit: cover;
 }
 
 .Info {
@@ -38,7 +41,7 @@
 
 .InfoItem {
     /* border: 2px solid red; */
-    height: 11%;
+    height: 20%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -49,11 +52,11 @@
 
 .InfoIcon {
     display: flex;
-    min-width: 30px;
-    max-width: 50px;
+    /* min-width: 30px;
+    max-width: 50px; */
     width: 10%;
-    height: 100%;
-    margin-right: 3%;
+    height: 80%;
+    /* margin-right: 2%; */
     /* border: red 2px solid; */
 }
 
@@ -64,7 +67,7 @@
 
 .InfoNum {
     flex-grow: 1;
-    font-size: medium;
+    font-size: large;
     font-weight: bold;
     color: #818181;
 }
@@ -100,21 +103,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: larger;
+    font-size: x-large;
     font-weight: bold;
     color: #1B3973;
-    margin-top: 2%;
+    margin-top: 3%;
 }
 
 .TokenImgContainer {
-    height: 60%;
+    height: 55%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .TokenImg {
-    width: 60%;
+    width: 80%;
     height: 100%;
 }
 
@@ -124,7 +127,7 @@
     display: flex;
     justify-content: center;
     /* align-items: center; */
-    font-size: x-large;
+    font-size: xx-large;
     font-weight: bold;
     color: #1B3973;
 }

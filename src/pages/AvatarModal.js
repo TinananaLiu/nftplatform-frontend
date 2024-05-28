@@ -4,6 +4,7 @@ import closex from './image/closex.svg'
 import plus from './image/plus.svg'
 import defaultavatar from './image/defaultavatar.svg'
 import './AvatarModal.css'
+import { updateImgAndName } from '../apis/api'
 
 const customStyles = {
   content: {

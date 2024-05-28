@@ -10,37 +10,48 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
 import SwipeableViews from 'react-swipeable-views-react-18-fix'
 import { autoPlay } from 'react-swipeable-views-utils'
 import './NftItemStepper.css'
+import defaultbg from './image/defaultbg.svg'
+import { useNavigate } from 'react-router-dom'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
 const defaultImages = {
-  academic: {
-    label: 'San Francisco – Oakland Bay Bridge, United States',
-    imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60'
-  },
-  professional: {
-    label: 'Bird',
-    imgPath:
-      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60'
-  },
-  leadership: {
-    label: 'Bali, Indonesia',
-    imgPath:
-      'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250'
-  },
-  creative: {
-    label: 'Goč, Serbia',
-    imgPath:
-      'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60'
-  }
+  Academic: [
+    {
+      label: 'San Francisco - Oakland Bay Bridge, United States',
+      imgPath:
+        'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60'
+    }
+  ],
+  Professional: [
+    {
+      label: 'Bird',
+      imgPath:
+        'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60'
+    }
+  ],
+  Collaboration: [
+    {
+      label: 'Bali, Indonesia',
+      imgPath:
+        'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250'
+    }
+  ],
+  Creativity: [
+    {
+      label: 'Goč, Serbia',
+      imgPath:
+        'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60'
+    }
+  ]
 }
 
-function SwipeableTextMobileStepper({ category }) {
+function SwipeableTextMobileStepper({ category, nftsImg }) {
   const theme = useTheme()
   const [activeStep, setActiveStep] = React.useState(0)
-  const [images, setImages] = React.useState([defaultImages[category]])
-  const maxSteps = images.length
+  const [images, setImages] = React.useState(nftsImg && nftsImg[category])
+  const maxSteps = images && images.length
+  const navigateTo = useNavigate()
 
   const handleNext = () => {
     setActiveStep(prevActiveStep => prevActiveStep + 1)
@@ -57,7 +68,8 @@ function SwipeableTextMobileStepper({ category }) {
     // fetch('').then(res => {
     //   setImages(res.data)
     // })
-  }, [])
+    console.log(images)
+  }, [images])
   return (
     <Box
       sx={{
@@ -80,31 +92,80 @@ function SwipeableTextMobileStepper({ category }) {
         }}>
         <Typography>{images[activeStep].label}</Typography>
       </Paper> */}
-      <AutoPlaySwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        autoplay={false}
-        enableMouseEvents>
-        {images.map((step, index) => (
-          <div key={step.label} className="StepperImg">
-            {Math.abs(activeStep - index) <= 2 ? (
+      <Box sx={{ maxHeight: '60%', overflow: 'hidden' }}>
+        <AutoPlaySwipeableViews
+          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          index={activeStep}
+          onChangeIndex={handleStepChange}
+          autoplay={false}
+          enableMouseEvents>
+          {images && images.length > 0 ? (
+            images.map(step => (
+              <div key={step.label} className="StepperImg">
+                {Math.abs(activeStep - 0) <= 2 ? (
+                  <Box
+                    component="img"
+                    sx={{
+                      height: '60%',
+                      display: 'block',
+                      maxWidth: '80%',
+                      overflow: 'hidden',
+                      width: '100%',
+                      objectFit: 'cover',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                    src={step.imgPath}
+                    alt={step.label}
+                    onClick={() => navigateTo(`/nftitem?nft_id=${step.nft_id}`)}
+                  />
+                ) : null}
+              </div>
+            ))
+          ) : (
+            <div className="StepperImg">
               <Box
                 component="img"
                 sx={{
-                  height: '50%',
+                  height: '100%',
                   display: 'block',
-                  maxWidth: '50%',
+                  maxWidth: '80%',
                   overflow: 'hidden',
-                  width: '80%'
+                  width: '100%',
+                  objectFit: 'cover',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
-                src={step.imgPath}
-                alt={step.label}
+                src={defaultbg}
+                alt="default"
               />
-            ) : null}
-          </div>
-        ))}
-      </AutoPlaySwipeableViews>
+            </div>
+          )}
+
+          {/* {images &&
+            images.map(step => (
+              <div key={step.label} className="StepperImg">
+                {Math.abs(activeStep - 0) <= 2 ? (
+                  <Box
+                    component="img"
+                    sx={{
+                      height: '60%',
+                      display: 'block',
+                      maxWidth: '80%',
+                      overflow: 'hidden',
+                      width: '100%',
+                      objectFit: 'cover',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                    src={step.imgPath}
+                    alt={step.label}
+                  />
+                ) : null}
+              </div>
+            ))} */}
+        </AutoPlaySwipeableViews>
+      </Box>
       <MobileStepper
         steps={maxSteps}
         position="static"
@@ -112,7 +173,8 @@ function SwipeableTextMobileStepper({ category }) {
         sx={{
           width: '90%',
           height: '5%',
-          bgcolor: '#dfeff6'
+          bgcolor: 'transparent',
+          marginBottom: '2.5rem'
           // display: 'flex'
           // justifyContent: 'center'
         }}

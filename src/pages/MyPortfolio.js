@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import './MyPortfolio.css'
-import userphoto from './image/userphoto.svg'
+// import userphoto from './image/userphoto.svg'
+import defaultavatar from './image/defaultavatar.svg'
 import backarrow from './image/backarrow.svg'
 import { useNavigate } from 'react-router-dom'
 import SwipeableTextMobileStepper from './NftItemStepper'
@@ -8,8 +9,9 @@ import Button from '@mui/material/Button'
 import { useState } from 'react'
 import FormDialog from './MoodDialog'
 import AvatarModal from './AvatarModal'
+import AvatarDialog from './AvatarDialog'
 import { useSignIn } from '../providers/SignIn'
-import { getUserBio, getUserInfo } from '../apis/api'
+import { getAllMyNfts, getUserBio, getUserInfo } from '../apis/api'
 
 const MyPortfolioPage = () => {
   const [moodText, setMoodText] = useState('Type anything...')
@@ -18,7 +20,11 @@ const MyPortfolioPage = () => {
   const [error, setError] = useState('')
 
   const [userBio, setUserBio] = useState('')
+  const [userName, setUserName] = useState('')
+  const [avatar, setAvatar] = useState(null)
+  const [nftsImg, setNftsImg] = useState(null)
 
+  const signInContext = useSignIn()
   // const editMood = () => {
   //   const newMoodText = prompt('Enter your mood:')
   //   if (newMoodText !== null) {
@@ -28,9 +34,35 @@ const MyPortfolioPage = () => {
   // }
 
   useEffect(() => {
-    getUserBio().then(bio => {
-      setUserBio(bio)
-    })
+    if (!localStorage.getItem('jwt')) {
+      window.location.href = '/'
+    } else {
+      // getUserBio().then(bio => {
+      //   setUserBio(bio)
+      // })
+      getUserInfo().then(res => {
+        console.log(res[0].bio)
+        setUserBio(res[0].bio)
+        setUserName(res[0].user_name)
+        setAvatar(process.env.REACT_APP_GOOGLE_STORAGE_USER + res[0].image)
+      })
+
+      getAllMyNfts().then(res => {
+        console.log(res)
+        const formattedImages = res.reduce((acc, item) => {
+          const category = item.category
+          acc[category] = acc[category] ? acc[category] : []
+          acc[category].push({
+            label: item.title,
+            imgPath: process.env.REACT_APP_GOOGLE_STORAGE_NFT + item.image,
+            nft_id: item.nft_id
+          })
+          return acc
+        }, {})
+        console.log(formattedImages)
+        setNftsImg(formattedImages)
+      })
+    }
   }, [])
 
   const { info: my_info } = useSignIn()
@@ -47,7 +79,7 @@ const MyPortfolioPage = () => {
 
   return (
     <>
-      <AvatarModal
+      {/* <AvatarModal
         modalVisible={modalVisible}
         closeModal={() => {
           setError('')
@@ -55,7 +87,7 @@ const MyPortfolioPage = () => {
         }}
         // handleSave={handleSave}
         error={error}
-      />
+      /> */}
 
       <div className="BackContainer">
         <img src={backarrow} alt="back" onClick={goBack} />
@@ -64,14 +96,16 @@ const MyPortfolioPage = () => {
       <div className="MyUserPart">
         <span className="MyPhoto">
           <img
-            src={my_info.image ? my_info.image : userphoto}
-            alt="userphoto"
+            src={avatar ? avatar : defaultavatar}
+            // src={my_info.image ? my_info.image : defaultavatar}
+            alt="defaultavatar"
             onClick={handleAvatarUpload}
           />
         </span>
         <span className="MyInfo">
           <span className="MyInfoName">
-            {my_info.user_name ? my_info.user_name : 'Tinanana'}
+            {userName && userName}
+            {/* {my_info.user_name ? my_info.user_name : 'Tinanana'} */}
           </span>
           <span className="MyInfoItem">
             <FormDialog setUserBio={setUserBio} />
@@ -95,25 +129,53 @@ const MyPortfolioPage = () => {
               <BorderLinearProgress variant="determinate" value={progress} />
             </Box>
           </span> */}
+          <span className="MyInfoItem">
+            <AvatarDialog
+              avatar={avatar}
+              userName={userName}
+              setUserName={setUserName}
+              setAvatar={setAvatar}
+            />
+          </span>
         </span>
       </div>
 
       <div class="PortfolioContainer">
         <div class="PortfolioItem">
-          <span>Academic Achievements</span>
-          <SwipeableTextMobileStepper category={'academic'} />
+          <span class="PortfolioItemTitle">Academic Achievements</span>
+          {nftsImg && (
+            <SwipeableTextMobileStepper
+              category={'Academic'}
+              nftsImg={nftsImg}
+            />
+          )}
         </div>
         <div class="PortfolioItem">
-          <span>Professional Skills</span>
-          <SwipeableTextMobileStepper category={'professional'} />
+          <span class="PortfolioItemTitle">Professional Skills</span>
+          {nftsImg && (
+            <SwipeableTextMobileStepper
+              category={'Professional'}
+              nftsImg={nftsImg}
+            />
+          )}
         </div>
         <div class="PortfolioItem">
-          <span>Leadership & Teamwork</span>
-          <SwipeableTextMobileStepper category={'leadership'} />
+          <span class="PortfolioItemTitle">Leadership & Teamwork</span>
+          {nftsImg && (
+            <SwipeableTextMobileStepper
+              category={'Collaboration'}
+              nftsImg={nftsImg}
+            />
+          )}
         </div>
         <div class="PortfolioItem">
-          <span>Creative & Personal Development</span>
-          <SwipeableTextMobileStepper category={'creative'} />
+          <span class="PortfolioItemTitle">Creative & Personal Growth</span>
+          {nftsImg && (
+            <SwipeableTextMobileStepper
+              category={'Creativity'}
+              nftsImg={nftsImg}
+            />
+          )}
         </div>
       </div>
     </>

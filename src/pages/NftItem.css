@@ -86,7 +86,8 @@
 }
 
 .UserPhoto {
-    height: 100%;
+    height: 3rem;
+    width: 3rem;
     display: flex;
     align-items: center;
     margin-right: 2%;
@@ -94,7 +95,11 @@
 }
 
 .UserPhoto img {
-    height: 90%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+
 }
 
 
@@ -140,4 +145,55 @@
     /* border: rgb(0, 0, 0) 1px dashed; */
     width: 75%;
     white-space: pre-line;
+}
+
+.Verify {
+    border: rgb(0, 0, 0) 1px dashed;
+    display: flex;
+    flex-direction: column;
+    height: 6rem;
+    /* height: 100px; */
+    justify-content: space-between;
+}
+
+.VerifyElement {
+    /* border: rgb(255, 0, 0) 1px dashed; */
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex: 1;
+    /* height: 30%; */
+}
+
+
+.VerifyTitle {
+    /* border: rgb(255, 213, 0) 1px dashed; */
+    width: 5%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.VerifyImg {
+    /* border: rgb(0, 255, 34) 1px dashed; */
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 1%;
+}
+
+.VerifyImg img {
+    /* border: rgb(0, 94, 255) 1px dashed; */
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.VerifyFile {
+    /* border: rgb(0, 94, 255) 1px dashed; */
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* margin-left: 1%; */
 }
