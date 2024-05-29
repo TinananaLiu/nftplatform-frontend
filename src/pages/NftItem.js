@@ -94,18 +94,26 @@ const NftItemPage = () => {
 
   return (
     <>
-      {/* <div>NftItemTest</div>
-
-      <div>Back</div>
-      <div>NFT Item</div> */}
       <div className="BackContainer">
         <img src={backarrow} alt="back" onClick={goBack} />
+      </div>
+
+      <div
+        style={{
+          fontFamily: 'Kanit',
+          fontWeight: '500',
+          fontSize: '40px',
+          // lineHeight: '70px',
+          textAlign: 'start',
+          width: '80%',
+          marginTop: '1rem'
+        }}>
+        NFT Item
       </div>
 
       <div className="NftContainer">
         <span className="LeftPart">
           <span className="Image">
-            {/* 這裡要改nft image */}
             <img
               src={
                 nftData && nftData.image
@@ -114,7 +122,6 @@ const NftItemPage = () => {
               }
               alt="defaultnft"
             />
-            {/* <img src={notebook} alt="notebook" /> */}
           </span>
           <span className="Tags">
             {nftData ? (
@@ -169,25 +176,31 @@ const NftItemPage = () => {
             <span className="InfoElement">
               <span className="InfoElementTitle">Date</span>
               <span className="InfoElementContent">
-                {nftData && nftData.date}
+                <div className="InfoElementText">{nftData && nftData.date}</div>
               </span>
             </span>
             <span className="InfoElement">
               <span className="InfoElementTitle">Category</span>
               <span className="InfoElementContent">
-                {nftData && nftData.category}
+                <div className="InfoElementText">
+                  {nftData && nftData.category}
+                </div>
               </span>
             </span>
             <span className="InfoElement">
               <span className="InfoElementTitle">Institution</span>
               <span className="InfoElementContent">
-                {nftData && nftData.institution}
+                <div className="InfoElementText">
+                  {nftData && nftData.institution}
+                </div>
               </span>
             </span>
             <span className="InfoElement">
               <span className="InfoElementTitle">Description</span>
               <span className="InfoElementContent">
-                {nftData && nftData.description}
+                <div className="InfoElementText">
+                  {nftData && nftData.description}
+                </div>
               </span>
             </span>
             <span className="InfoElement">

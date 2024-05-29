@@ -169,24 +169,41 @@
 .ClickButton {
   background-color: #9FCAE3;
   border-radius: 30px;
-  width: 160px;
-  height: 30px;
-  padding-top: 10px;
+  width: 9rem;
+  height: 2.5rem;
+  /* padding-top: 10px; */
   margin-bottom: 1rem;
   font-family: 'Kanit', sans-serif;
   display: flex;
   justify-content: center;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.ClickButtonWord
+{
+  margin-right: 1%;
+}
+
+.ClickButtonIcon
+{
+  margin-left: 1%;
+  margin-top: 2%;
 }
 
 .GreenCheck {
-  width: 18px;
+  width: 1rem;
   height: auto;
+}
+
+.PlusContainer {
+  margin: 2% 0 2% 0;
 }
 
 .Plus {
   width: 30px;
   height: auto;
-  padding-top: 1rem;
+  /* padding-top: 1rem; */
 }
 
 

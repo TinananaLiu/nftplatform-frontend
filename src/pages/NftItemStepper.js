@@ -127,11 +127,11 @@ function SwipeableTextMobileStepper({ category, nftsImg }) {
               <Box
                 component="img"
                 sx={{
-                  height: '100%',
+                  height: '10rem',
                   display: 'block',
-                  maxWidth: '80%',
+                  // maxWidth: '80%',
                   overflow: 'hidden',
-                  width: '100%',
+                  width: '10rem',
                   objectFit: 'cover',
                   alignItems: 'center',
                   justifyContent: 'center'

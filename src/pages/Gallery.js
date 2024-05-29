@@ -100,7 +100,7 @@ const GalleryPage = () => {
           <span
             style={{
               fontFamily: 'Kanit',
-              fontWeight: '400',
+              fontWeight: '500',
               fontSize: '40px',
               lineHeight: '70px',
               textAlign: 'center'

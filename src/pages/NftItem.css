@@ -12,7 +12,8 @@
 
 .Image {
     /* border: rgb(255, 0, 0) 2px dashed; */
-    height: 55%;
+    height: 12rem;
+    width: 12rem;
     margin-top: 2%;
     display: flex;
     justify-content: center; /* 水平居中 */
@@ -25,18 +26,14 @@
     display: flex;
     justify-content: center; /* 水平居中 */
     align-items: center;     /* 垂直居中 */
+    /* justify-content: space-between; */
 }
 
-.Delete {
-    /* border: rgb(0, 61, 243) 2px dashed; */
-    /* margin-top: 2%; */
-    /* display: flex;
-    align-items: end; */
-}
 
 .Image img {
-    width: 90%;
+    width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 
@@ -46,8 +43,8 @@
     border-radius: 20px;
     font-family: monospace;
     font-size: larger;
-    width: 30%;
-    height: 40%;
+    width: 6rem;
+    height: 2rem;
     display: flex;
     justify-content: center; /* 水平居中 */
     align-items: center;     /* 垂直居中 */
@@ -59,6 +56,7 @@
     flex-direction: column;
     /* align-items: center; */
     justify-content: center;
+    align-items: center;
     width: 35%;
     margin-left: 1%;
 }
@@ -107,7 +105,7 @@
 .ItemName {
     /* border: rgb(115, 255, 0) 2px solid; */
     font-family: 'Kanit', sans-serif;
-    height: 20%;
+    height: 4rem;
     display: flex;
     align-items: center;
     font-size: x-large;
@@ -125,33 +123,41 @@
 }
 
 .InfoElement {
-    /* border: rgb(255, 0, 0) 2px solid; */
+    border: rgb(255, 0, 0) 2px solid;
     flex-grow: 1;
     display: flex;
     /* align-items: center; */
-    font-size: larger;
+    font-size: large;
+    /* height: 3rem; */
+    /* align-items: center; */
+    margin-bottom: 1rem;
 }
 
 .InfoElementTitle {
     display: flex;
     /* border: rgb(0, 0, 0) 1px dashed; */
     width: 25%;
-
-
 }
 
 .InfoElementContent {
     display: flex;
-    /* border: rgb(0, 0, 0) 1px dashed; */
+    border: rgb(0, 0, 0) 1px dashed;
     width: 75%;
-    white-space: pre-line;
+
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.InfoElementText {
+    width: 100%;
+    text-wrap: wrap;
 }
 
 .Verify {
     /* border: rgb(0, 0, 0) 1px dashed; */
     display: flex;
     flex-direction: column;
-    height: 6rem;
+    /* height: 6rem; */
     /* height: 100px; */
     justify-content: space-between;
 }
@@ -159,9 +165,10 @@
 .VerifyElement {
     /* border: rgb(255, 0, 0) 1px dashed; */
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     /* justify-content: center; */
     flex: 1;
+    margin-bottom: 3%;
     /* height: 30%; */
 }
 
@@ -172,6 +179,7 @@
     height: 100%;
     display: flex;
     align-items: center;
+    /* justify-content: flex-start; */
 }
 
 .VerifyImg {

@@ -44,7 +44,7 @@ const UploadPage = () => {
           ) : (
             <div>{fileName}</div>
           )}
-          <div>
+          <div className="PlusContainer">
             <input
               type="file"
               id="file"
@@ -75,8 +75,8 @@ const UploadPage = () => {
           </div>
           {/* <div className="UploadWord">or Drop files here.</div> */}
           <div className="ClickButton" onClick={handleUpload}>
-            <div>Upload</div>
-            <div>
+            <div className="ClickButtonWord">Upload</div>
+            <div className="ClickButtonIcon">
               <img src={uploadicon} className="GreenCheck" alt="uploadicon" />
             </div>
           </div>

@@ -3,7 +3,7 @@ import Avatar from '../pages/image/token.svg'
 const baseURL = process.env.REACT_APP_BASE_URL
 const api_endpoint = axios.create({
   baseURL: baseURL,
-  timeout: 3000
+  timeout: 5000
 })
 
 let jwt = localStorage.getItem('jwt')
@@ -136,7 +136,7 @@ const updateUserBio = async ({ userBio }) => {
 
 const updateImgAndName = async (userName, imageURL, fileName) => {
   //取url再轉成blob丟到後端
-  
+
   const formData = new FormData()
   formData.append('userName', userName)
   // return 200

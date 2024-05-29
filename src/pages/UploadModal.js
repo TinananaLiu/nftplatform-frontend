@@ -382,14 +382,12 @@ const UploadModal = ({
         </div>
 
         <div
-        // style={{
-        //   height: '1rem',
-        //   display: 'flex',
-        //   justifyContent: 'center',
-        //   alignContent: 'center',
-        //   margin: '1rem 0 1rem 0'
-        // }}
-        >
+          style={{
+            height: '3rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
           {error !== '' ? (
             <div
               style={{

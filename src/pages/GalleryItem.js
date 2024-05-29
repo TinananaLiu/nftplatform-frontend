@@ -71,7 +71,8 @@ const GalleryItemPage = () => {
                 fontWeight: '500',
                 fontSize: '40px',
                 lineHeight: '70px',
-                textAlign: 'start'
+                textAlign: 'start',
+                marginTop: '1rem'
               }}>
               {person}'s portfolio
             </div>
