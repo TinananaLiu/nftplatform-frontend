@@ -148,7 +148,7 @@
 }
 
 .Verify {
-    border: rgb(0, 0, 0) 1px dashed;
+    /* border: rgb(0, 0, 0) 1px dashed; */
     display: flex;
     flex-direction: column;
     height: 6rem;
