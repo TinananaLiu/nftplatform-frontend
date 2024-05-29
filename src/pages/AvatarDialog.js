@@ -51,7 +51,10 @@ export default function AvatarDialog({
                 status => {
                   if (status === 200) {
                     setUserName(newName)
-                    setAvatar(newAvatar)
+                    if(newAvatar){
+                      setAvatar(newAvatar)
+                    }
+                    
                   }
                 }
               )
