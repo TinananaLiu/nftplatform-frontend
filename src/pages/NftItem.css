@@ -123,7 +123,7 @@
 }
 
 .InfoElement {
-    border: rgb(255, 0, 0) 2px solid;
+    /* border: rgb(255, 0, 0) 2px solid; */
     flex-grow: 1;
     display: flex;
     /* align-items: center; */
@@ -141,7 +141,7 @@
 
 .InfoElementContent {
     display: flex;
-    border: rgb(0, 0, 0) 1px dashed;
+    /* border: rgb(0, 0, 0) 1px dashed; */
     width: 75%;
 
     white-space: normal;

@@ -97,7 +97,9 @@ const MyPortfolioPage = () => {
           <span className="MyInfoName">{userName && userName}</span>
           <span className="MyInfoItem">
             <FormDialog setUserBio={setUserBio} />
-            <span>{userBio}</span>
+            <span className="MyInfoItemContent">
+              <div className="MyInfoItemText">{userBio}</div>
+            </span>
           </span>
 
           <span className="MyInfoItem">
