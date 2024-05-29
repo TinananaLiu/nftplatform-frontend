@@ -136,11 +136,12 @@ const updateUserBio = async ({ userBio }) => {
 
 const updateImgAndName = async (userName, imageURL, fileName) => {
   //取url再轉成blob丟到後端
-  const image = await fetch(imageURL).then(response => response.blob())
+  
   const formData = new FormData()
   formData.append('userName', userName)
   // return 200
-  if (image) {
+  if (imageURL) {
+    const image = await fetch(imageURL).then(response => response.blob())
     formData.append('image', image, fileName) //第三個參數改filename 前面也要改傳入filename
     const result = await fetch(baseURL + '/user/imgname', {
       method: 'PUT',
