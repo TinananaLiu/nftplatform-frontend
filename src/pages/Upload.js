@@ -10,6 +10,7 @@ import UploadModal from './UploadModal'
 import { uploadNft, uploadProfileToBackend } from '../apis/api'
 import { useNavigate } from 'react-router-dom'
 import { useSignIn } from '../providers/SignIn'
+import { checkURL } from './Cover'
 
 const UploadPage = () => {
   const [status, setStatus] = useState(0)
@@ -17,7 +18,6 @@ const UploadPage = () => {
   const [hashId, setHashId] = useState(null)
   const [fileURL, setFileURL] = useState(null)
   const [fileName, setFilename] = useState(null)
-  const [isUpload, setIsUpload] = useState(false)
 
   const navigateTo = useNavigate()
   const signInContext = useSignIn()
@@ -39,10 +39,18 @@ const UploadPage = () => {
     if (status === 0) {
       return (
         <>
-          {!isUpload ? (
+          {!fileURL ? (
             <img src={uploadfile} className="UploadPic" alt="uploadfile" />
           ) : (
-            <div>{fileName}</div>
+            <div>
+              <img
+                src={checkURL(fileURL)}
+                className="UploadPic"
+                id="UploadFile"
+                alt="UploadFile"
+              />
+              <div>{fileName}</div>
+            </div>
           )}
           <div className="PlusContainer">
             <input
@@ -55,12 +63,12 @@ const UploadPage = () => {
                 if (file) {
                   const reader = new FileReader()
                   reader.onload = e => {
+                    console.log(e.target.result)
                     setFileURL(e.target.result)
                   }
                   reader.readAsDataURL(file)
                 }
                 setFilename(file.name)
-                setIsUpload(true)
               }}
             />
             <img

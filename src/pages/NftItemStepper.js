@@ -50,7 +50,7 @@ function SwipeableTextMobileStepper({ category, nftsImg }) {
   const theme = useTheme()
   const [activeStep, setActiveStep] = React.useState(0)
   const [images, setImages] = React.useState(nftsImg && nftsImg[category])
-  const maxSteps = images && images.length
+  const maxSteps = images && images.length > 0 ? images.length : 1
   const navigateTo = useNavigate()
 
   const handleNext = () => {
@@ -99,48 +99,51 @@ function SwipeableTextMobileStepper({ category, nftsImg }) {
           onChangeIndex={handleStepChange}
           autoplay={false}
           enableMouseEvents>
-          {images && images.length > 0 ? (
-            images.map(step => (
-              <div key={step.label} className="StepperImg">
-                {Math.abs(activeStep - 0) <= 2 ? (
+          {images && images.length > 0
+            ? images.map(step => (
+                <div key={step.label} className="StepperImg">
+                  {Math.abs(activeStep - 0) <= 2 ? (
+                    <Box
+                      component="img"
+                      sx={{
+                        height: '60%',
+                        display: 'block',
+                        maxWidth: '80%',
+                        overflow: 'hidden',
+                        width: '100%',
+                        objectFit: 'cover',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}
+                      src={step.imgPath}
+                      alt={step.label}
+                      onClick={() =>
+                        navigateTo(`/nftitem?nft_id=${step.nft_id}`)
+                      }
+                    />
+                  ) : null}
+                </div>
+              ))
+            : [
+                <div className="StepperImg">
                   <Box
                     component="img"
                     sx={{
-                      height: '60%',
+                      height: '10rem',
                       display: 'block',
-                      maxWidth: '80%',
+                      // maxWidth: '80%',
                       overflow: 'hidden',
-                      width: '100%',
+                      width: '10rem',
                       objectFit: 'cover',
                       alignItems: 'center',
                       justifyContent: 'center'
                     }}
-                    src={step.imgPath}
-                    alt={step.label}
-                    onClick={() => navigateTo(`/nftitem?nft_id=${step.nft_id}`)}
+                    src={defaultbg}
+                    alt="default"
                   />
-                ) : null}
-              </div>
-            ))
-          ) : (
-            <div className="StepperImg">
-              <Box
-                component="img"
-                sx={{
-                  height: '10rem',
-                  display: 'block',
-                  // maxWidth: '80%',
-                  overflow: 'hidden',
-                  width: '10rem',
-                  objectFit: 'cover',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-                src={defaultbg}
-                alt="default"
-              />
-            </div>
-          )}
+                </div>,
+                null
+              ]}
 
           {/* {images &&
             images.map(step => (

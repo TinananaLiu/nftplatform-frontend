@@ -20,7 +20,7 @@ import HiddenDialog from './HiddenDialog'
 import { useSignIn } from '../providers/SignIn'
 import { Height } from '@mui/icons-material'
 import { Link } from '@mui/material'
-import { checkFileName } from './cover'
+import { checkFileName } from './Cover'
 // export default function IconCheckboxes() {
 //   return (
 //     <div>

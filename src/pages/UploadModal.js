@@ -5,7 +5,7 @@ import plus from './image/plus.svg'
 import './UploadModal.css'
 import { colors } from '@mui/material'
 import { uploadNft } from '../apis/api'
-import { checkURL } from './cover'
+import { checkURL } from './Cover'
 
 const customStyles = {
   content: {
@@ -168,6 +168,8 @@ const UploadModal = ({
                   className="InputBoxElement"
                   type="text"
                   id="nfttag1"
+                  placeholder="5 characters only"
+                  maxLength={5}
                   required
                 />
               </span>
@@ -179,6 +181,8 @@ const UploadModal = ({
                   className="InputBoxElement"
                   type="text"
                   id="nfttag2"
+                  placeholder="5 characters only"
+                  maxLength={5}
                   required
                 />
               </span>
