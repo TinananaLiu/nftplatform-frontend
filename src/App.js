@@ -144,7 +144,8 @@ function App() {
                       }}
                       onClick={() => {
                         signInContext.logout()
-                        window.location.reload()
+                        navigateTo('/', { replace: true })
+                        // window.location.reload()
                       }}>
                       Log out
                     </Button>
