@@ -2,8 +2,8 @@ import axios from 'axios'
 import Avatar from '../pages/image/token.svg'
 const baseURL = process.env.REACT_APP_BASE_URL
 const api_endpoint = axios.create({
-  baseURL: baseURL,
-  timeout: 5000
+  baseURL: baseURL
+  // timeout: 5000。
 })
 
 let jwt = localStorage.getItem('jwt')
