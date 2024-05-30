@@ -22,7 +22,7 @@
 .MainPage {
   /* flex: 8; */
   /* height: 100%; */
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,6 +35,7 @@
   justify-content: center;
   /* border: rgb(0, 0, 0) 2px dashed; */
   max-height: 80px;
+  max-width: 100%;
 }
 
 .UserBarElement {
@@ -57,6 +58,7 @@
   align-items: center;
   justify-content: start;
   min-height: 100vh;
+  max-width: 100%;
 }
 
 .Logo {

@@ -3,7 +3,7 @@
   font-family: 'Kanit', sans-serif;
   display: flex;
   width: 90%;
-  height: 30%;
+  /* height: 40%; */
   align-items: center;
   margin: 0 0 2% 0;
 }
@@ -31,7 +31,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 80%;
+  width: 70%;
   height: 90%;
   text-align: left;
   margin-left: 2rem;
@@ -49,27 +49,32 @@
 }
 
 .MyInfoItem {
-  /* border: rgb(16, 176, 2) 1px dashed; */
+  /* border: rgb(2, 31, 176) 1px dashed; */
   display: flex;
   /* flex-direction: column; */
   align-items: center;
   font-size: x-large;
   color: #6e6f70;
   margin-left: 1%;
+  margin-top: 1%;
   font-family: monospace;
   word-wrap: break-word;
+  /* width: 100%; */
 }
 .MyInfoItemContent {
-  width: 60%;
+  /* border: rgb(255, 140, 0) 1px dashed; */
+  width: 90%;
   word-wrap: break-word;
 }
 .MyInfoItemText {
+  /* border: rgb(0, 0, 0) 1px dashed; */
   width: 100%;
-  text-wrap: wrap; ;
+  text-wrap: wrap ;
 }
 
 .PortfolioContainer {
   display: flex;
+  margin-top: 2%;
   max-width: 90%;
   max-height: 50%;
   /* grid-template-columns: 50% 50%; 
@@ -95,8 +100,11 @@
 }
 
 .PortfolioItemTitle {
-  margin-top: 15%;
-  margin-bottom: 2%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  /* border: rgb(255, 38, 38) 1px dashed; */
+  /* height: 10rem; */
+  font-size: larger;
 }
 
 .Stepper {

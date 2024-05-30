@@ -58,6 +58,7 @@ export default function FormDialog({ setUserBio }) {
             type="text"
             fullWidth
             variant="standard"
+            inputProps={{ maxLength: 80 }}
           />
         </DialogContent>
         <DialogActions>

@@ -115,7 +115,7 @@ const MyPortfolioPage = () => {
 
       <div class="PortfolioContainer">
         <div class="PortfolioItem">
-          <span class="PortfolioItemTitle">Academic Achievements</span>
+          <span class="PortfolioItemTitle">Academic</span>
           {nftsImg && (
             <SwipeableTextMobileStepper
               category={'Academic'}
@@ -124,7 +124,7 @@ const MyPortfolioPage = () => {
           )}
         </div>
         <div class="PortfolioItem">
-          <span class="PortfolioItemTitle">Professional Skills</span>
+          <span class="PortfolioItemTitle">Professional</span>
           {nftsImg && (
             <SwipeableTextMobileStepper
               category={'Professional'}
@@ -133,7 +133,7 @@ const MyPortfolioPage = () => {
           )}
         </div>
         <div class="PortfolioItem">
-          <span class="PortfolioItemTitle">Leadership & Teamwork</span>
+          <span class="PortfolioItemTitle">Collaboration</span>
           {nftsImg && (
             <SwipeableTextMobileStepper
               category={'Collaboration'}
@@ -142,7 +142,7 @@ const MyPortfolioPage = () => {
           )}
         </div>
         <div class="PortfolioItem">
-          <span class="PortfolioItemTitle">Creative & Personal Growth</span>
+          <span class="PortfolioItemTitle">Creativity</span>
           {nftsImg && (
             <SwipeableTextMobileStepper
               category={'Creativity'}

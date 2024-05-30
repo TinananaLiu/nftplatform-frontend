@@ -73,26 +73,22 @@ function SwipeableTextMobileStepper({ category, nftsImg }) {
   return (
     <Box
       sx={{
-        maxWidth: '100%',
+        // maxWidth: '100%',
         flexGrow: 1,
-        maxHeight: '100%',
+        // maxHeight: '100%',
+        height: '100%',
+        width: '100%',
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center'
       }}>
-      {/* <Paper
-        square
-        elevation={0}
+      <Box
         sx={{
-          display: 'flex',
-          alignItems: 'center',
-          height: 50,
-          pl: 2,
-          bgcolor: '#dbecf589'
+          overflow: 'hidden',
+          height: '8rem',
+          width: '8rem'
+          // border: 'rgb(255, 0, 0) 2px dashed'
         }}>
-        <Typography>{images[activeStep].label}</Typography>
-      </Paper> */}
-      <Box sx={{ maxHeight: '60%', overflow: 'hidden' }}>
         <AutoPlaySwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={activeStep}
@@ -106,14 +102,13 @@ function SwipeableTextMobileStepper({ category, nftsImg }) {
                     <Box
                       component="img"
                       sx={{
-                        height: '60%',
-                        display: 'block',
-                        maxWidth: '80%',
-                        overflow: 'hidden',
+                        height: '100%',
                         width: '100%',
                         objectFit: 'cover',
                         alignItems: 'center',
                         justifyContent: 'center'
+
+                        // alignSelf: 'center'
                       }}
                       src={step.imgPath}
                       alt={step.label}
@@ -129,14 +124,13 @@ function SwipeableTextMobileStepper({ category, nftsImg }) {
                   <Box
                     component="img"
                     sx={{
-                      height: '10rem',
-                      display: 'block',
-                      // maxWidth: '80%',
-                      overflow: 'hidden',
-                      width: '10rem',
+                      height: '100%',
+                      width: '100%',
                       objectFit: 'cover',
                       alignItems: 'center',
                       justifyContent: 'center'
+
+                      // alignSelf: 'center'
                     }}
                     src={defaultbg}
                     alt="default"
@@ -144,29 +138,6 @@ function SwipeableTextMobileStepper({ category, nftsImg }) {
                 </div>,
                 null
               ]}
-
-          {/* {images &&
-            images.map(step => (
-              <div key={step.label} className="StepperImg">
-                {Math.abs(activeStep - 0) <= 2 ? (
-                  <Box
-                    component="img"
-                    sx={{
-                      height: '60%',
-                      display: 'block',
-                      maxWidth: '80%',
-                      overflow: 'hidden',
-                      width: '100%',
-                      objectFit: 'cover',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                    src={step.imgPath}
-                    alt={step.label}
-                  />
-                ) : null}
-              </div>
-            ))} */}
         </AutoPlaySwipeableViews>
       </Box>
       <MobileStepper
