@@ -11,6 +11,11 @@ import { uploadNft, uploadProfileToBackend } from '../apis/api'
 import { useNavigate } from 'react-router-dom'
 import { useSignIn } from '../providers/SignIn'
 import { checkURL } from './Cover'
+import { styled } from '@mui/material/styles'
+import Button from '@mui/material/Button'
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip'
+import HelpIcon from '@mui/icons-material/Help'
+import IconButton from '@mui/material/IconButton'
 
 const UploadPage = () => {
   const [status, setStatus] = useState(0)
@@ -18,6 +23,23 @@ const UploadPage = () => {
   const [hashId, setHashId] = useState(null)
   const [fileURL, setFileURL] = useState(null)
   const [fileName, setFilename] = useState(null)
+
+  const CustomWidthTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))({
+    [`& .${tooltipClasses.tooltip}`]: {
+      maxWidth: 400,
+      fontSize: '15px',
+      fontFamily: 'Kanit',
+      fontWeight: 'normal',
+      whiteSpace: 'pre-line'
+    }
+  })
+
+  const longText = `Upload Hint:  
+1. First, click the "plus" icon to upload your main file.
+2. Then, click the "upload" button for further inputs.
+`
 
   const navigateTo = useNavigate()
   const signInContext = useSignIn()
@@ -27,7 +49,11 @@ const UploadPage = () => {
   }
 
   const handleUpload = () => {
-    setModalVisible(true)
+    if (fileURL) {
+      setModalVisible(true)
+    } else {
+      window.alert('Please upload main file first!')
+    }
   }
   useEffect(() => {
     if (!localStorage.getItem('jwt')) {
@@ -39,6 +65,14 @@ const UploadPage = () => {
     if (status === 0) {
       return (
         <>
+          <div style={{ alignSelf: 'end' }}>
+            <CustomWidthTooltip title={longText}>
+              <IconButton aria-label="hint">
+                <HelpIcon />
+              </IconButton>
+              {/* <Button sx={{ fontFamily: 'Kanit' }}>?</Button> */}
+            </CustomWidthTooltip>
+          </div>
           {!fileURL ? (
             <img src={uploadfile} className="UploadPic" alt="uploadfile" />
           ) : (
@@ -81,7 +115,6 @@ const UploadPage = () => {
               }}
             />
           </div>
-          {/* <div className="UploadWord">or Drop files here.</div> */}
           <div className="ClickButton" onClick={handleUpload}>
             <div className="ClickButtonWord">Upload</div>
             <div className="ClickButtonIcon">

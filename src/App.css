@@ -142,7 +142,7 @@
 .UploadContainer {
   display: flex;
   flex-direction: column;
-  height: 50vh;
+  height: 52vh;
   width: 80%;
   margin-top: 1rem;
   background-color: #dbecf589;
@@ -174,7 +174,7 @@
   background-color: #9FCAE3;
   border-radius: 30px;
   width: 9rem;
-  height: 2.5rem;
+  height: 40px;
   /* padding-top: 10px; */
   margin-bottom: 1rem;
   font-family: 'Kanit', sans-serif;
